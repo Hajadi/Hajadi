@@ -78,8 +78,12 @@ void main() {
       expect(profile.isVerified, isTrue);
       expect(profile.portfolio.single.id, 'p1');
       expect(profile.certificates.single.title, 'INFP');
-      // Workers who never set a preference accept every method.
-      expect(profile.acceptedPaymentMethods, hasLength(3));
+      // Workers who never set a preference accept every method, cards
+      // included — the platform carries card processing, not the worker.
+      expect(
+        profile.acceptedPaymentMethods,
+        <String>['moncash', 'natcash', 'card', 'cash'],
+      );
     });
   });
 
