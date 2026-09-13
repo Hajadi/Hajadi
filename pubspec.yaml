@@ -42,7 +42,7 @@ dependencies:
 
   # Misc
   http: ^1.2.2
-  intl: ^0.19.0
+  intl: ^0.20.2
   url_launcher: ^6.3.0
   uuid: ^4.5.1
 
