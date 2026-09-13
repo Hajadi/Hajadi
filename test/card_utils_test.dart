@@ -15,6 +15,13 @@ void main() {
       expect(CardUtils.brandOf('2721999999999999'), CardBrand.unknown);
     });
 
+    test('the accepted set is exactly Visa and Mastercard', () {
+      expect(
+        CardBrand.values.where((CardBrand b) => b.isAccepted).toSet(),
+        <CardBrand>{CardBrand.visa, CardBrand.mastercard},
+      );
+    });
+
     test('recognises brands we do not accept', () {
       expect(CardUtils.brandOf('378282246310005'), CardBrand.amex);
       expect(CardUtils.brandOf('6011111111111117'), CardBrand.discover);

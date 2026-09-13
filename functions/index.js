@@ -23,6 +23,10 @@ const db = getFirestore();
 const REGION = "us-central1";
 const SERVICE_FEE_RATE = 0.1;
 
+// The only card schemes Jwenn Mèt accepts. The app enforces this too, but a
+// client is not something to take at its word: anything else is refused here.
+const ACCEPTED_CARD_BRANDS = ["visa", "mastercard"];
+
 // Wallet credentials live in Secret Manager, never in the repo:
 //   firebase functions:secrets:set MONCASH_CLIENT_SECRET
 const MONCASH_CLIENT_ID = defineSecret("MONCASH_CLIENT_ID");
@@ -316,11 +320,18 @@ exports.createPayment = onRequest(
       // If no token is present the app has no tokenization key configured, so
       // fall back to the acquirer's hosted checkout page and let it collect
       // the card entirely outside our systems.
+      if (cardBrand && !ACCEPTED_CARD_BRANDS.includes(String(cardBrand))) {
+        logger.warn("refused unsupported card brand", { invoiceId, cardBrand });
+        res.status(400).json({ error: "card_brand_not_accepted" });
+        return;
+      }
       if (!cardToken) {
         logger.info("card payment without token: using hosted checkout", {
           invoiceId,
         });
         // redirectUrl = <hosted checkout session URL from the acquirer>;
+        // Configure the acquirer's checkout to offer Visa and Mastercard only,
+        // so an unsupported card is refused before the customer types it.
       }
       await invoiceRef.update({
         status: "processing",
@@ -381,12 +392,17 @@ exports.paymentWebhook = onRequest(
     const invoice = matches.docs[0];
     const paid = status === "paid" || status === "success";
     const { cardBrand, cardLast4 } = req.body || {};
+    const acceptedBrand =
+      cardBrand && ACCEPTED_CARD_BRANDS.includes(String(cardBrand))
+        ? String(cardBrand)
+        : null;
     await invoice.ref.update({
       status: paid ? "paid" : "failed",
       paidAt: paid ? FieldValue.serverTimestamp() : null,
       // A hosted card checkout reports the brand and last four only here,
-      // because the app never saw the card at all.
-      ...(cardBrand ? { cardBrand } : {}),
+      // because the app never saw the card at all. An unrecognised brand is
+      // dropped rather than written to the receipt.
+      ...(acceptedBrand ? { cardBrand: acceptedBrand } : {}),
       ...(cardLast4 ? { cardLast4: String(cardLast4).slice(-4) } : {}),
     });
 

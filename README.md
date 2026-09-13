@@ -118,15 +118,44 @@ the user reads today.
 
 ## Payments
 
-MonCash, NatCash and cash. Wallet credentials never reach the device: the app
-calls `createPayment` (Cloud Function), which verifies the caller's ID token,
-confirms they own the invoice, reads the amount from Firestore and creates the
-charge. Settlement arrives at `paymentWebhook`. Cash stays `unpaid` until the
-worker confirms receipt in the app. Every completed job issues an invoice with
-a 10% platform fee (`AppConfig.serviceFeeRate`).
+MonCash, NatCash, **Visa / Mastercard** and cash. Credentials never reach the
+device: the app calls `createPayment` (Cloud Function), which verifies the
+caller's ID token, confirms they own the invoice, reads the amount from
+Firestore and creates the charge. Settlement arrives at `paymentWebhook`. Cash
+stays `unpaid` until the worker confirms receipt in the app. Every completed job
+issues an invoice with a 10% platform fee (`AppConfig.serviceFeeRate`).
 
-See `functions/index.js` for the two provider hooks to fill in once merchant
-access is granted.
+### Cards, and staying out of PCI scope
+
+The card number is never sent to our own backend. The app validates it locally
+(brand, Luhn, expiry, CVC — `lib/core/utils/card_utils.dart`) and then exchanges
+it for a **single-use token** with the acquirer, using the publishable key; only
+that token reaches `createPayment`, which charges it with the secret key held in
+Secret Manager. A 3-D Secure challenge comes back as a redirect the app opens.
+
+```
+flutter run --dart-define=DEMO_MODE=false \
+            --dart-define=CARD_TOKENIZATION_URL=https://api.<acquirer>.com/tokens \
+            --dart-define=CARD_PUBLISHABLE_KEY=pk_live_...
+```
+
+Leave those two defines unset and cards fall back to the acquirer's **hosted
+checkout page**, where no card data touches the app at all. Either way the only
+card details ever stored are the brand and the last four digits, on the invoice,
+for the receipt.
+
+**Visa and Mastercard are the only accepted schemes.** Amex and Discover are
+detected purely so an unsupported card gets a clear message rather than a vague
+decline; they are refused by `CardUtils.validateNumber` on the device and again
+by the `ACCEPTED_CARD_BRANDS` allowlist in `createPayment`, because a client is
+not something to take at its word. Configure the acquirer to offer the same two
+schemes so a hosted checkout matches.
+
+In demo mode any Luhn-valid Visa/Mastercard number (for example
+`4242 4242 4242 4242`) succeeds and one ending `0000` declines.
+
+See `functions/index.js` for the wallet and card provider hooks to fill in once
+merchant access is granted.
 
 ## Tests and checks
 
@@ -137,8 +166,10 @@ python3 scripts/gen_strings.py              # catalog parity
 ```
 
 Covered: search filtering and sorting (`WorkerQuery`), Haitian phone/email
-validation, model serialization including Firestore timestamps, invoice math,
-catalog parity, and the integrity of the bundled dataset.
+validation, card validation (accepted brands, Luhn, expiry boundaries, CVC
+length) and the demo payment paths, model serialization including Firestore
+timestamps, invoice math, catalog parity, and the integrity of the bundled
+dataset.
 
 ## Regenerating assets
 
