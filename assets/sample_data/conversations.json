@@ -1,0 +1,258 @@
+[
+  {
+    "id": "demo_customer_worker_3",
+    "participantIds": [
+      "demo_customer",
+      "worker_3"
+    ],
+    "titles": {
+      "demo_customer": "Marie-Ange Prophète",
+      "worker_3": "Roseline Noël"
+    },
+    "photoUrls": {
+      "demo_customer": "https://api.dicebear.com/7.x/avataaars/png?seed=marie-ange&backgroundColor=0A6CFF",
+      "worker_3": "https://api.dicebear.com/7.x/avataaars/png?seed=worker_3&backgroundColor=0A6CFF"
+    },
+    "jobId": "job_1",
+    "lastMessage": "Apeprè 6000 goud ak materyèl yo. M ap konfime lè m wè l.",
+    "lastMessageAt": "2026-09-07T18:10:00Z",
+    "unreadCounts": {
+      "demo_customer": 1,
+      "worker_3": 0
+    },
+    "messages": [
+      {
+        "id": "demo_customer_worker_3_m1",
+        "senderId": "demo_customer",
+        "text": "Priz kizin nan pa gen kouran depi yè swa, disjonktè a sote chak fwa.",
+        "imageUrl": null,
+        "sentAt": "2026-09-07T17:40:00Z",
+        "readBy": [
+          "demo_customer"
+        ]
+      },
+      {
+        "id": "demo_customer_worker_3_m2",
+        "senderId": "worker_3",
+        "text": "Bonjou! Mwen ka pase demen maten vè 9è. Sa bon pou ou?",
+        "imageUrl": null,
+        "sentAt": "2026-09-07T17:50:00Z",
+        "readBy": [
+          "worker_3"
+        ]
+      },
+      {
+        "id": "demo_customer_worker_3_m3",
+        "senderId": "demo_customer",
+        "text": "Wi sa bon. Konbyen sa ap koute apeprè?",
+        "imageUrl": null,
+        "sentAt": "2026-09-07T18:00:00Z",
+        "readBy": [
+          "demo_customer"
+        ]
+      },
+      {
+        "id": "demo_customer_worker_3_m4",
+        "senderId": "worker_3",
+        "text": "Apeprè 6000 goud ak materyèl yo. M ap konfime lè m wè l.",
+        "imageUrl": null,
+        "sentAt": "2026-09-07T18:10:00Z",
+        "readBy": [
+          "worker_3"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "customer_1_worker_8",
+    "participantIds": [
+      "customer_1",
+      "worker_8"
+    ],
+    "titles": {
+      "customer_1": "Nadège Alcé",
+      "worker_8": "Emmanuel Dorvil"
+    },
+    "photoUrls": {
+      "customer_1": "https://api.dicebear.com/7.x/avataaars/png?seed=customer_1&backgroundColor=0A6CFF",
+      "worker_8": "https://api.dicebear.com/7.x/avataaars/png?seed=worker_8&backgroundColor=0A6CFF"
+    },
+    "jobId": "job_2",
+    "lastMessage": "Apeprè 12000 goud ak materyèl yo. M ap konfime lè m wè l.",
+    "lastMessageAt": "2026-08-15T21:10:00Z",
+    "unreadCounts": {
+      "customer_1": 0,
+      "worker_8": 0
+    },
+    "messages": [
+      {
+        "id": "customer_1_worker_8_m1",
+        "senderId": "customer_1",
+        "text": "Fuite anba lavabo saldeben an, dlo ap koule tout lajounen.",
+        "imageUrl": null,
+        "sentAt": "2026-08-15T20:40:00Z",
+        "readBy": [
+          "customer_1"
+        ]
+      },
+      {
+        "id": "customer_1_worker_8_m2",
+        "senderId": "worker_8",
+        "text": "Bonjou! Mwen ka pase demen maten vè 9è. Sa bon pou ou?",
+        "imageUrl": null,
+        "sentAt": "2026-08-15T20:50:00Z",
+        "readBy": [
+          "worker_8"
+        ]
+      },
+      {
+        "id": "customer_1_worker_8_m3",
+        "senderId": "customer_1",
+        "text": "Wi sa bon. Konbyen sa ap koute apeprè?",
+        "imageUrl": null,
+        "sentAt": "2026-08-15T21:00:00Z",
+        "readBy": [
+          "customer_1"
+        ]
+      },
+      {
+        "id": "customer_1_worker_8_m4",
+        "senderId": "worker_8",
+        "text": "Apeprè 12000 goud ak materyèl yo. M ap konfime lè m wè l.",
+        "imageUrl": null,
+        "sentAt": "2026-08-15T21:10:00Z",
+        "readBy": [
+          "worker_8"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "customer_2_worker_13",
+    "participantIds": [
+      "customer_2",
+      "worker_13"
+    ],
+    "titles": {
+      "customer_2": "Ricardo Sainvil",
+      "worker_13": "Darline Delva"
+    },
+    "photoUrls": {
+      "customer_2": "https://api.dicebear.com/7.x/avataaars/png?seed=customer_2&backgroundColor=0A6CFF",
+      "worker_13": "https://api.dicebear.com/7.x/avataaars/png?seed=worker_13&backgroundColor=0A6CFF"
+    },
+    "jobId": "job_3",
+    "lastMessage": "Apeprè 8500 goud ak materyèl yo. M ap konfime lè m wè l.",
+    "lastMessageAt": "2026-09-10T21:10:00Z",
+    "unreadCounts": {
+      "customer_2": 0,
+      "worker_13": 0
+    },
+    "messages": [
+      {
+        "id": "customer_2_worker_13_m1",
+        "senderId": "customer_2",
+        "text": "Mwen bezwen de pòt an bwa pou chanm yo, ak kad yo.",
+        "imageUrl": null,
+        "sentAt": "2026-09-10T20:40:00Z",
+        "readBy": [
+          "customer_2"
+        ]
+      },
+      {
+        "id": "customer_2_worker_13_m2",
+        "senderId": "worker_13",
+        "text": "Bonjou! Mwen ka pase demen maten vè 9è. Sa bon pou ou?",
+        "imageUrl": null,
+        "sentAt": "2026-09-10T20:50:00Z",
+        "readBy": [
+          "worker_13"
+        ]
+      },
+      {
+        "id": "customer_2_worker_13_m3",
+        "senderId": "customer_2",
+        "text": "Wi sa bon. Konbyen sa ap koute apeprè?",
+        "imageUrl": null,
+        "sentAt": "2026-09-10T21:00:00Z",
+        "readBy": [
+          "customer_2"
+        ]
+      },
+      {
+        "id": "customer_2_worker_13_m4",
+        "senderId": "worker_13",
+        "text": "Apeprè 8500 goud ak materyèl yo. M ap konfime lè m wè l.",
+        "imageUrl": null,
+        "sentAt": "2026-09-10T21:10:00Z",
+        "readBy": [
+          "worker_13"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "demo_customer_worker_18",
+    "participantIds": [
+      "demo_customer",
+      "worker_18"
+    ],
+    "titles": {
+      "demo_customer": "Marie-Ange Prophète",
+      "worker_18": "Josué Étienne"
+    },
+    "photoUrls": {
+      "demo_customer": "https://api.dicebear.com/7.x/avataaars/png?seed=marie-ange&backgroundColor=0A6CFF",
+      "worker_18": "https://api.dicebear.com/7.x/avataaars/png?seed=worker_18&backgroundColor=0A6CFF"
+    },
+    "jobId": "job_4",
+    "lastMessage": "Apeprè 3200 goud ak materyèl yo. M ap konfime lè m wè l.",
+    "lastMessageAt": "2026-09-05T17:10:00Z",
+    "unreadCounts": {
+      "demo_customer": 0,
+      "worker_18": 0
+    },
+    "messages": [
+      {
+        "id": "demo_customer_worker_18_m1",
+        "senderId": "demo_customer",
+        "text": "Mi kloti a fann, li bezwen repare ak yon kouch siman.",
+        "imageUrl": null,
+        "sentAt": "2026-09-05T16:40:00Z",
+        "readBy": [
+          "demo_customer"
+        ]
+      },
+      {
+        "id": "demo_customer_worker_18_m2",
+        "senderId": "worker_18",
+        "text": "Bonjou! Mwen ka pase demen maten vè 9è. Sa bon pou ou?",
+        "imageUrl": null,
+        "sentAt": "2026-09-05T16:50:00Z",
+        "readBy": [
+          "worker_18"
+        ]
+      },
+      {
+        "id": "demo_customer_worker_18_m3",
+        "senderId": "demo_customer",
+        "text": "Wi sa bon. Konbyen sa ap koute apeprè?",
+        "imageUrl": null,
+        "sentAt": "2026-09-05T17:00:00Z",
+        "readBy": [
+          "demo_customer"
+        ]
+      },
+      {
+        "id": "demo_customer_worker_18_m4",
+        "senderId": "worker_18",
+        "text": "Apeprè 3200 goud ak materyèl yo. M ap konfime lè m wè l.",
+        "imageUrl": null,
+        "sentAt": "2026-09-05T17:10:00Z",
+        "readBy": [
+          "worker_18"
+        ]
+      }
+    ]
+  }
+]

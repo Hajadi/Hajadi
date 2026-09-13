@@ -1,0 +1,23 @@
+[
+  {
+    "id": "report_1",
+    "reporterId": "demo_customer",
+    "targetUserId": "worker_6",
+    "targetName": "Frantz Bazile",
+    "reason": "fraud",
+    "details": "Li mande depo avan epi li pa janm vini.",
+    "jobId": "job_7",
+    "status": "open",
+    "createdAt": "2026-09-12T09:30:00Z"
+  },
+  {
+    "id": "report_2",
+    "reporterId": "worker_2",
+    "targetUserId": "customer_4",
+    "targetName": "Kliyan an",
+    "reason": "abuse",
+    "details": "Mesaj ki pa respektan nan chat la.",
+    "status": "open",
+    "createdAt": "2026-09-07T09:30:00Z"
+  }
+]

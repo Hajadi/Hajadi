@@ -1,0 +1,57 @@
+rules_version = '2';
+
+// Storage layout mirrors the Firestore trust model.
+//   profiles/   public images (profile photos)
+//   portfolio/  public images (work samples)
+//   jobs/       images attached to a job request
+//   chats/      images sent in a thread
+//   identity/   ID scans and certificates — write-only for the owner,
+//               readable only by an admin. This is the one bucket that must
+//               never become public.
+service firebase.storage {
+  match /b/{bucket}/o {
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isSelf(uid) {
+      return isSignedIn() && request.auth.uid == uid;
+    }
+
+    function isAdmin() {
+      return isSignedIn() && request.auth.token.admin == true;
+    }
+
+    function isImage() {
+      return request.resource.contentType.matches('image/.*') &&
+        request.resource.size < 8 * 1024 * 1024;
+    }
+
+    match /profiles/{uid}/{fileName} {
+      allow read: if true;
+      allow write: if isSelf(uid) && isImage();
+    }
+
+    match /portfolio/{uid}/{fileName} {
+      allow read: if true;
+      allow write: if isSelf(uid) && isImage();
+    }
+
+    match /jobs/{jobId}/{fileName} {
+      allow read: if isSignedIn();
+      allow write: if isSignedIn() && isImage();
+    }
+
+    match /chats/{conversationId}/{fileName} {
+      allow read: if isSignedIn();
+      allow write: if isSignedIn() && isImage();
+    }
+
+    match /identity/{uid}/{allPaths=**} {
+      allow read: if isAdmin();
+      allow write: if isSelf(uid) &&
+        request.resource.size < 12 * 1024 * 1024;
+    }
+  }
+}

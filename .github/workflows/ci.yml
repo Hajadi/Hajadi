@@ -1,0 +1,64 @@
+name: CI
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+
+jobs:
+  flutter:
+    name: Analyze and test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.32.x"
+          channel: stable
+          cache: true
+
+      - run: flutter pub get
+
+      # Infos are lint suggestions (const constructors and friends); errors
+      # and warnings still fail the build.
+      - run: flutter analyze --no-fatal-infos
+
+      - run: flutter test
+
+  catalogs:
+    name: Translations and sources
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Catalog parity + generated strings are current
+        run: |
+          python3 scripts/gen_strings.py
+          git diff --exit-code lib/core/localization/strings.dart
+
+      - name: Sample data is regenerable
+        run: |
+          python3 scripts/generate_sample_data.py
+          git diff --exit-code assets/sample_data
+
+      - name: Static source checks
+        run: python3 scripts/check_dart_sources.py
+
+  functions:
+    name: Cloud Functions
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - run: node --check functions/index.js
+      - run: node --check scripts/seed_firestore.js
+      - run: npm install --prefix functions --package-lock-only
