@@ -37,7 +37,7 @@ class UserScope extends StatelessWidget {
       key: ValueKey<String>(
         '$userId:${session.user?.role.id}:$hasWorkerProfile',
       ),
-      providers: <SingleChildWidget>[
+      providers: [
         ChangeNotifierProvider<JobsViewModel>(
           create: (_) =>
               JobsViewModel(services, userId: userId, asWorker: isWorker),

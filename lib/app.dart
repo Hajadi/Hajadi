@@ -20,7 +20,7 @@ class JwennMetApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => MultiProvider(
-        providers: <SingleChildWidget>[
+        providers: [
           Provider<Services>.value(value: services),
           ChangeNotifierProvider<SessionViewModel>(
             create: (_) => SessionViewModel(services),

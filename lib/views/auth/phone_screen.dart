@@ -82,9 +82,12 @@ class _PhoneScreenState extends State<PhoneScreen> {
                   await auth.startPhoneVerification(_phone.text);
                   return;
                 }
+                // Resolve the router before the await: the BuildContext may
+                // not be mounted by the time the code is confirmed.
+                final GoRouter router = GoRouter.of(context);
                 final String? uid = await auth.confirmCode(_code.text);
-                if (uid != null && mounted) {
-                  context.go(Routes.home);
+                if (uid != null) {
+                  router.go(Routes.home);
                 }
               },
             ),

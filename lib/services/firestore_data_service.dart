@@ -58,8 +58,7 @@ class FirestoreDataService implements DataService {
   @override
   Future<void> saveUser(AppUser user) async {
     final Map<String, dynamic> data = user.toMap();
-    data['createdAt'] =
-        user.createdAt == null ? FieldValue.serverTimestamp() : user.createdAt;
+    data['createdAt'] = user.createdAt ?? FieldValue.serverTimestamp();
     data['updatedAt'] = FieldValue.serverTimestamp();
     await _users.doc(user.id).set(data, SetOptions(merge: true));
   }

@@ -42,13 +42,13 @@ class _WorkerProfileEditScreenState extends State<WorkerProfileEditScreen> {
     text: '${_dashboard.profile.yearsExperience}',
   );
 
-  late Set<String> _trades = _dashboard.profile.categoryIds.toSet();
-  late Set<String> _serviceDepartments =
+  late final Set<String> _trades = _dashboard.profile.categoryIds.toSet();
+  late final Set<String> _serviceDepartments =
       <String>{..._dashboard.profile.serviceDepartmentIds}
         ..add(_dashboard.profile.departmentId);
-  late Set<String> _serviceCities =
+  late final Set<String> _serviceCities =
       _dashboard.profile.serviceCities.toSet()..add(_dashboard.profile.city);
-  late Set<String> _methods =
+  late final Set<String> _methods =
       _dashboard.profile.acceptedPaymentMethods.toSet();
   late HaitiDepartment _department =
       HaitiDepartment.fromId(_dashboard.profile.departmentId) ??
