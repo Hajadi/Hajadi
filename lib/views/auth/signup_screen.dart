@@ -119,7 +119,7 @@ class _SignupScreenState extends State<SignupScreen> {
               ),
               const SizedBox(height: AppSpacing.md),
               DropdownButtonFormField<HaitiDepartment>(
-                initialValue: _department,
+                value: _department,
                 isExpanded: true,
                 decoration: InputDecoration(
                   labelText: s.filterDepartment,
@@ -144,7 +144,7 @@ class _SignupScreenState extends State<SignupScreen> {
               ),
               const SizedBox(height: AppSpacing.md),
               DropdownButtonFormField<String>(
-                initialValue: _city,
+                value: _city,
                 isExpanded: true,
                 decoration: InputDecoration(
                   labelText: s.filterCity,

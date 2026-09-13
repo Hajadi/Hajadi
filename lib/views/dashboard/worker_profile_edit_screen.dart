@@ -229,7 +229,7 @@ class _WorkerProfileEditScreenState extends State<WorkerProfileEditScreen> {
           Text(s.serviceAreas, style: Theme.of(context).textTheme.titleMedium),
           const SizedBox(height: AppSpacing.sm),
           DropdownButtonFormField<HaitiDepartment>(
-            initialValue: _department,
+            value: _department,
             isExpanded: true,
             decoration: InputDecoration(labelText: s.filterDepartment),
             items: <DropdownMenuItem<HaitiDepartment>>[
@@ -251,7 +251,7 @@ class _WorkerProfileEditScreenState extends State<WorkerProfileEditScreen> {
           ),
           const SizedBox(height: AppSpacing.md),
           DropdownButtonFormField<String>(
-            initialValue:
+            value:
                 _department.cities.contains(_city) ? _city : _department.cities.first,
             isExpanded: true,
             decoration: InputDecoration(labelText: s.filterCity),

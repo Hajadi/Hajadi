@@ -169,7 +169,7 @@ class _BookingScreenState extends State<BookingScreen> {
           ),
           const SizedBox(height: AppSpacing.md),
           DropdownButtonFormField<String>(
-            initialValue: booking.departmentId,
+            value: booking.departmentId,
             isExpanded: true,
             decoration: InputDecoration(labelText: s.filterDepartment),
             items: <DropdownMenuItem<String>>[
@@ -191,7 +191,7 @@ class _BookingScreenState extends State<BookingScreen> {
           ),
           const SizedBox(height: AppSpacing.md),
           DropdownButtonFormField<String>(
-            initialValue: cities.contains(booking.city) ? booking.city : null,
+            value: cities.contains(booking.city) ? booking.city : null,
             isExpanded: true,
             decoration: InputDecoration(labelText: s.filterCity),
             items: <DropdownMenuItem<String>>[

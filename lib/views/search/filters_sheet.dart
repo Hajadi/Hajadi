@@ -106,7 +106,7 @@ class _FiltersSheetState extends State<_FiltersSheet> {
                 const SizedBox(height: AppSpacing.lg),
                 _Label(s.filterDepartment),
                 DropdownButtonFormField<String?>(
-                  initialValue: _filters.departmentId,
+                  value: _filters.departmentId,
                   isExpanded: true,
                   items: <DropdownMenuItem<String?>>[
                     DropdownMenuItem<String?>(
@@ -129,7 +129,7 @@ class _FiltersSheetState extends State<_FiltersSheet> {
                 const SizedBox(height: AppSpacing.md),
                 _Label(s.filterCity),
                 DropdownButtonFormField<String?>(
-                  initialValue:
+                  value:
                       _cities.contains(_filters.city) ? _filters.city : null,
                   isExpanded: true,
                   items: <DropdownMenuItem<String?>>[
