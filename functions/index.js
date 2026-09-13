@@ -29,6 +29,9 @@ const MONCASH_CLIENT_ID = defineSecret("MONCASH_CLIENT_ID");
 const MONCASH_CLIENT_SECRET = defineSecret("MONCASH_CLIENT_SECRET");
 const NATCASH_MERCHANT_ID = defineSecret("NATCASH_MERCHANT_ID");
 const NATCASH_API_KEY = defineSecret("NATCASH_API_KEY");
+// Card acquirer (Visa / Mastercard). The device only ever holds the
+// publishable key; this secret one is what actually moves money.
+const CARD_SECRET_KEY = defineSecret("CARD_SECRET_KEY");
 const PAYMENT_WEBHOOK_SECRET = defineSecret("PAYMENT_WEBHOOK_SECRET");
 
 /** Writes an in-app notification and pushes it to the user's devices. */
@@ -237,14 +240,21 @@ exports.createPayment = onRequest(
   {
     region: REGION,
     cors: true,
-    secrets: [MONCASH_CLIENT_ID, MONCASH_CLIENT_SECRET, NATCASH_MERCHANT_ID, NATCASH_API_KEY],
+    secrets: [
+      MONCASH_CLIENT_ID,
+      MONCASH_CLIENT_SECRET,
+      NATCASH_MERCHANT_ID,
+      NATCASH_API_KEY,
+      CARD_SECRET_KEY,
+    ],
   },
   async (req, res) => {
     if (req.method !== "POST") {
       res.status(405).json({ error: "method_not_allowed" });
       return;
     }
-    const { invoiceId, method, payerPhone } = req.body || {};
+    const { invoiceId, method, payerPhone, cardToken, cardBrand, cardLast4 } =
+      req.body || {};
     if (!invoiceId || !method) {
       res.status(400).json({ error: "invalid_request" });
       return;
@@ -283,27 +293,62 @@ exports.createPayment = onRequest(
       return;
     }
 
+    if (!["moncash", "natcash", "card"].includes(method)) {
+      res.status(400).json({ error: "unsupported_method" });
+      return;
+    }
+
     const amount = (invoice.get("subtotal") || 0) + (invoice.get("serviceFee") || 0);
     const reference = `${method.toUpperCase()}-${invoiceId}-${Date.now()}`;
+    let redirectUrl = null;
 
-    // --- Wallet integration -------------------------------------------------
-    // Replace the block below with the provider call once merchant access is
-    // granted. Both providers follow the same shape: authenticate with the
-    // merchant credentials, create a payment for `amount` in HTG, and return a
-    // hosted checkout URL the app opens. Settlement arrives at
-    // `paymentWebhook` below — never trust the client's word for it.
-    //
-    //   MonCash: POST https://moncashbutton.digicelgroup.com/Api/v1/CreatePayment
-    //   NatCash: POST https://api.natcash.ht/merchant/v1/payments
-    const redirectUrl = null;
+    if (method === "card") {
+      // --- Card integration (Visa / Mastercard) ----------------------------
+      // The app tokenizes with the acquirer's publishable key, so what arrives
+      // here is a single-use token — never a PAN. Charge it with CARD_SECRET_KEY
+      // and return the 3-D Secure URL when the issuer asks for a challenge:
+      //
+      //   POST https://api.<acquirer>.com/payments
+      //   { source: cardToken, amount: <minor units>, currency: "HTG",
+      //     "3ds": { enabled: true },
+      //     success_url / failure_url -> your hosted return pages }
+      //
+      // If no token is present the app has no tokenization key configured, so
+      // fall back to the acquirer's hosted checkout page and let it collect
+      // the card entirely outside our systems.
+      if (!cardToken) {
+        logger.info("card payment without token: using hosted checkout", {
+          invoiceId,
+        });
+        // redirectUrl = <hosted checkout session URL from the acquirer>;
+      }
+      await invoiceRef.update({
+        status: "processing",
+        transactionRef: reference,
+        method,
+        // Brand and last four are all we keep, and only for the receipt.
+        ...(cardBrand ? { cardBrand } : {}),
+        ...(cardLast4 ? { cardLast4: String(cardLast4).slice(-4) } : {}),
+      });
+    } else {
+      // --- Wallet integration ----------------------------------------------
+      // Replace with the provider call once merchant access is granted. Both
+      // wallets follow the same shape: authenticate with the merchant
+      // credentials, create a payment for `amount` in HTG, and return a hosted
+      // checkout URL the app opens.
+      //
+      //   MonCash: POST https://moncashbutton.digicelgroup.com/Api/v1/CreatePayment
+      //   NatCash: POST https://api.natcash.ht/merchant/v1/payments
+      await invoiceRef.update({
+        status: "processing",
+        transactionRef: reference,
+        method,
+      });
+    }
+
+    // Settlement always arrives at `paymentWebhook` below — never trust the
+    // client's word for it, whichever method was used.
     logger.info("payment requested", { invoiceId, method, amount, payerPhone });
-
-    await invoiceRef.update({
-      status: "processing",
-      transactionRef: reference,
-      method,
-    });
-
     res.json({ reference, status: "processing", redirectUrl });
   },
 );
@@ -335,9 +380,14 @@ exports.paymentWebhook = onRequest(
 
     const invoice = matches.docs[0];
     const paid = status === "paid" || status === "success";
+    const { cardBrand, cardLast4 } = req.body || {};
     await invoice.ref.update({
       status: paid ? "paid" : "failed",
       paidAt: paid ? FieldValue.serverTimestamp() : null,
+      // A hosted card checkout reports the brand and last four only here,
+      // because the app never saw the card at all.
+      ...(cardBrand ? { cardBrand } : {}),
+      ...(cardLast4 ? { cardLast4: String(cardLast4).slice(-4) } : {}),
     });
 
     if (paid) {

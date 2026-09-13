@@ -463,11 +463,17 @@ class FirestoreDataService implements DataService {
   Future<void> updateInvoiceStatus(
     String invoiceId,
     PaymentStatus status, {
+    PaymentMethod? method,
     String? transactionRef,
+    String? cardBrand,
+    String? cardLast4,
   }) =>
       _invoices.doc(invoiceId).update(<String, dynamic>{
         'status': status.id,
+        if (method != null) 'method': method.id,
         if (transactionRef != null) 'transactionRef': transactionRef,
+        if (cardBrand != null) 'cardBrand': cardBrand,
+        if (cardLast4 != null) 'cardLast4': cardLast4,
         if (status == PaymentStatus.paid) 'paidAt': FieldValue.serverTimestamp(),
       });
 

@@ -74,6 +74,38 @@ void main() {
     }
   });
 
+  test('card invoices carry a brand and last four — and never a full number',
+      () {
+    final List<Map<String, dynamic>> invoices = load('invoices.json');
+    final Iterable<Map<String, dynamic>> cards =
+        invoices.where((Map<String, dynamic> i) => i['method'] == 'card');
+
+    expect(cards, isNotEmpty, reason: 'demo mode should show a card payment');
+    for (final Map<String, dynamic> invoice in cards) {
+      expect(
+        <String>['visa', 'mastercard'],
+        contains(invoice['cardBrand']),
+      );
+      expect('${invoice['cardLast4']}', hasLength(4));
+    }
+    for (final Map<String, dynamic> invoice in invoices) {
+      expect(invoice.containsKey('cardNumber'), isFalse);
+      expect(invoice.containsKey('cvc'), isFalse);
+    }
+  });
+
+  test('workers offer the methods the app knows about', () {
+    const Set<String> known = <String>{'moncash', 'natcash', 'card', 'cash'};
+    for (final Map<String, dynamic> worker in load('workers.json')) {
+      final List<dynamic> methods =
+          worker['acceptedPaymentMethods'] as List<dynamic>;
+      expect(methods, isNotEmpty);
+      for (final dynamic method in methods) {
+        expect(known, contains('$method'), reason: '${worker['id']}');
+      }
+    }
+  });
+
   test('the three demo accounts are present with the documented roles', () {
     final Map<String, String> roles = <String, String>{
       for (final Map<String, dynamic> user in load('users.json'))

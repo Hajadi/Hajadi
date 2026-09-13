@@ -12,7 +12,13 @@ class BookingViewModel extends BaseViewModel {
             ? 'electrician'
             : worker.categoryIds.first,
         _departmentId = customer.departmentId ?? worker.departmentId,
-        _city = customer.city ?? worker.city;
+        _city = customer.city ?? worker.city {
+    // Never preselect a method this worker does not take.
+    final List<PaymentMethod> methods = availableMethods;
+    if (!methods.contains(_paymentMethod)) {
+      _paymentMethod = methods.isEmpty ? PaymentMethod.cash : methods.first;
+    }
+  }
 
   final Services _services;
   final WorkerProfile worker;

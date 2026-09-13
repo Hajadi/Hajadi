@@ -195,7 +195,10 @@ def build() -> None:
             ),
             "latitude": round(lat + random.uniform(-0.08, 0.08), 5),
             "longitude": round(lon + random.uniform(-0.08, 0.08), 5),
-            "acceptedPaymentMethods": ["moncash", "natcash", "cash"] if i % 4 else ["moncash", "cash"],
+            "acceptedPaymentMethods": (
+                ["moncash", "natcash", "card", "cash"] if i % 4
+                else ["moncash", "cash"]
+            ),
             "suspended": False,
             "createdAt": iso(NOW - timedelta(days=random.randint(30, 700))),
         })
@@ -259,7 +262,7 @@ def build() -> None:
             "categoryId": worker["categoryIds"][0],
             "description": job_descriptions[i % len(job_descriptions)],
             "status": status,
-            "paymentMethod": ["moncash", "natcash", "cash"][i % 3],
+            "paymentMethod": ["moncash", "natcash", "card", "cash"][i % 4],
             "departmentId": worker["departmentId"],
             "city": worker["city"],
             "addressNote": f"{random.randint(1, 99)}, Ri {random.choice(['Kapwa', 'Lamè', 'Nò', 'Delmas 33', 'Rue Pavée'])}",
@@ -279,6 +282,15 @@ def build() -> None:
 
         if status == "completed":
             fee = round(price * 0.10, 2)
+            card_receipt = {}
+            if job["paymentMethod"] == "card":
+                # Only ever the brand and the last four digits — a full card
+                # number must never reach Firestore.
+                card_receipt = {
+                    # Alternate across card invoices so both brands appear.
+                    "cardBrand": ["visa", "mastercard"][len(invoices) % 2],
+                    "cardLast4": f"{random.randint(1000, 9999)}",
+                }
             invoices.append({
                 "id": f"invoice_{i + 1}",
                 "number": f"JM-2026-{1000 + i}",
@@ -293,6 +305,7 @@ def build() -> None:
                 "method": job["paymentMethod"],
                 "status": "paid",
                 "transactionRef": f"{job['paymentMethod'].upper()}-{random.randint(100000, 999999)}",
+                **card_receipt,
                 "issuedAt": iso(created + timedelta(days=3)),
                 "paidAt": iso(created + timedelta(days=3, hours=1)),
             })

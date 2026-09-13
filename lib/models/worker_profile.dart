@@ -111,7 +111,12 @@ class WorkerProfile {
     this.certificates = const <Certificate>[],
     this.latitude,
     this.longitude,
-    this.acceptedPaymentMethods = const <String>['moncash', 'natcash', 'cash'],
+    this.acceptedPaymentMethods = const <String>[
+      'moncash',
+      'natcash',
+      'card',
+      'cash',
+    ],
     this.suspended = false,
     this.createdAt,
     this.distanceKm,
@@ -182,7 +187,7 @@ class WorkerProfile {
             map['longitude'] == null ? null : Json.asDouble(map['longitude']),
         acceptedPaymentMethods: Json.asStringList(map['acceptedPaymentMethods'])
             .isEmpty
-            ? const <String>['moncash', 'natcash', 'cash']
+            ? const <String>['moncash', 'natcash', 'card', 'cash']
             : Json.asStringList(map['acceptedPaymentMethods']),
         suspended: Json.asBool(map['suspended']),
         createdAt: Json.asDateOrNull(map['createdAt']),

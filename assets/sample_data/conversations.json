@@ -206,8 +206,8 @@
       "worker_18": "https://api.dicebear.com/7.x/avataaars/png?seed=worker_18&backgroundColor=0A6CFF"
     },
     "jobId": "job_4",
-    "lastMessage": "Apeprè 6000 goud ak materyèl yo. M ap konfime lè m wè l.",
-    "lastMessageAt": "2026-08-31T09:10:00Z",
+    "lastMessage": "Apeprè 3200 goud ak materyèl yo. M ap konfime lè m wè l.",
+    "lastMessageAt": "2026-09-05T17:10:00Z",
     "unreadCounts": {
       "demo_customer": 0,
       "worker_18": 0
@@ -218,7 +218,7 @@
         "senderId": "demo_customer",
         "text": "Mi kloti a fann, li bezwen repare ak yon kouch siman.",
         "imageUrl": null,
-        "sentAt": "2026-08-31T08:40:00Z",
+        "sentAt": "2026-09-05T16:40:00Z",
         "readBy": [
           "demo_customer"
         ]
@@ -228,7 +228,7 @@
         "senderId": "worker_18",
         "text": "Bonjou! Mwen ka pase demen maten vè 9è. Sa bon pou ou?",
         "imageUrl": null,
-        "sentAt": "2026-08-31T08:50:00Z",
+        "sentAt": "2026-09-05T16:50:00Z",
         "readBy": [
           "worker_18"
         ]
@@ -238,7 +238,7 @@
         "senderId": "demo_customer",
         "text": "Wi sa bon. Konbyen sa ap koute apeprè?",
         "imageUrl": null,
-        "sentAt": "2026-08-31T09:00:00Z",
+        "sentAt": "2026-09-05T17:00:00Z",
         "readBy": [
           "demo_customer"
         ]
@@ -246,9 +246,9 @@
       {
         "id": "demo_customer_worker_18_m4",
         "senderId": "worker_18",
-        "text": "Apeprè 6000 goud ak materyèl yo. M ap konfime lè m wè l.",
+        "text": "Apeprè 3200 goud ak materyèl yo. M ap konfime lè m wè l.",
         "imageUrl": null,
-        "sentAt": "2026-08-31T09:10:00Z",
+        "sentAt": "2026-09-05T17:10:00Z",
         "readBy": [
           "worker_18"
         ]

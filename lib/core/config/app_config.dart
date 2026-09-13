@@ -32,9 +32,23 @@ abstract final class AppConfig {
   static const double minHourlyRate = 0;
   static const double maxHourlyRate = 5000;
 
-  /// Cloud Function endpoints that broker MonCash / NatCash payments.
+  /// Cloud Function endpoints that broker MonCash / NatCash / card payments.
   static const String paymentsBaseUrl = String.fromEnvironment(
     'PAYMENTS_BASE_URL',
     defaultValue: 'https://us-central1-jwenn-met.cloudfunctions.net',
+  );
+
+  /// Card acquirer's tokenization endpoint and publishable key.
+  ///
+  /// Set both to accept cards with an in-app form: the number goes straight
+  /// from the device to the provider and only the resulting token reaches our
+  /// backend. Leave them empty and card payments fall back to the provider's
+  /// hosted checkout page, where no card data touches the app at all. Either
+  /// way the secret key stays in Cloud Functions.
+  static const String cardTokenizationUrl = String.fromEnvironment(
+    'CARD_TOKENIZATION_URL',
+  );
+  static const String cardPublishableKey = String.fromEnvironment(
+    'CARD_PUBLISHABLE_KEY',
   );
 }

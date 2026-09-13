@@ -44,9 +44,11 @@
     "subtotal": 8500.0,
     "serviceFee": 850.0,
     "currency": "HTG",
-    "method": "cash",
+    "method": "card",
     "status": "paid",
-    "transactionRef": "CASH-260667",
+    "transactionRef": "CARD-617198",
+    "cardBrand": "visa",
+    "cardLast4": "3510",
     "issuedAt": "2026-09-13T20:30:00Z",
     "paidAt": "2026-09-13T21:30:00Z"
   },
@@ -61,9 +63,9 @@
     "subtotal": 4500.0,
     "serviceFee": 450.0,
     "currency": "HTG",
-    "method": "natcash",
+    "method": "cash",
     "status": "paid",
-    "transactionRef": "NATCASH-831251",
+    "transactionRef": "CASH-831251",
     "issuedAt": "2026-07-09T03:30:00Z",
     "paidAt": "2026-07-09T04:30:00Z"
   },
@@ -78,9 +80,9 @@
     "subtotal": 1500.0,
     "serviceFee": 150.0,
     "currency": "HTG",
-    "method": "moncash",
+    "method": "natcash",
     "status": "paid",
-    "transactionRef": "MONCASH-495472",
+    "transactionRef": "NATCASH-495472",
     "issuedAt": "2026-08-23T07:30:00Z",
     "paidAt": "2026-08-23T08:30:00Z"
   },
@@ -95,9 +97,11 @@
     "subtotal": 2500.0,
     "serviceFee": 250.0,
     "currency": "HTG",
-    "method": "natcash",
+    "method": "card",
     "status": "paid",
-    "transactionRef": "NATCASH-722549",
+    "transactionRef": "CARD-360338",
+    "cardBrand": "mastercard",
+    "cardLast4": "2725",
     "issuedAt": "2026-06-23T07:30:00Z",
     "paidAt": "2026-06-23T08:30:00Z"
   },
@@ -114,9 +118,9 @@
     "currency": "HTG",
     "method": "cash",
     "status": "paid",
-    "transactionRef": "CASH-255068",
-    "issuedAt": "2026-08-15T04:30:00Z",
-    "paidAt": "2026-08-15T05:30:00Z"
+    "transactionRef": "CASH-714926",
+    "issuedAt": "2026-06-28T05:30:00Z",
+    "paidAt": "2026-06-28T06:30:00Z"
   },
   {
     "id": "invoice_13",
@@ -126,14 +130,14 @@
     "customerName": "Marie-Ange Prophète",
     "workerId": "worker_15",
     "workerName": "Mirlande Cadet",
-    "subtotal": 6000.0,
-    "serviceFee": 600.0,
+    "subtotal": 8500.0,
+    "serviceFee": 850.0,
     "currency": "HTG",
     "method": "moncash",
     "status": "paid",
-    "transactionRef": "MONCASH-795989",
-    "issuedAt": "2026-08-26T02:30:00Z",
-    "paidAt": "2026-08-26T03:30:00Z"
+    "transactionRef": "MONCASH-861029",
+    "issuedAt": "2026-06-21T17:30:00Z",
+    "paidAt": "2026-06-21T18:30:00Z"
   },
   {
     "id": "invoice_18",
@@ -143,13 +147,13 @@
     "customerName": "Darline Delva",
     "workerId": "worker_16",
     "workerName": "Kesner Lafontant",
-    "subtotal": 2500.0,
-    "serviceFee": 250.0,
+    "subtotal": 6000.0,
+    "serviceFee": 600.0,
     "currency": "HTG",
-    "method": "cash",
+    "method": "natcash",
     "status": "paid",
-    "transactionRef": "CASH-820561",
-    "issuedAt": "2026-08-13T22:30:00Z",
-    "paidAt": "2026-08-13T23:30:00Z"
+    "transactionRef": "NATCASH-642352",
+    "issuedAt": "2026-08-23T18:30:00Z",
+    "paidAt": "2026-08-23T19:30:00Z"
   }
 ]

@@ -64,12 +64,41 @@ firebase functions:secrets:set MONCASH_CLIENT_ID
 firebase functions:secrets:set MONCASH_CLIENT_SECRET
 firebase functions:secrets:set NATCASH_MERCHANT_ID
 firebase functions:secrets:set NATCASH_API_KEY
+firebase functions:secrets:set CARD_SECRET_KEY
 firebase functions:secrets:set PAYMENT_WEBHOOK_SECRET
 ```
 
-Then fill in the two provider calls marked in `functions/index.js` and register
+Then fill in the provider calls marked in `functions/index.js` and register
 `https://<region>-<project>.cloudfunctions.net/paymentWebhook` as the callback
 URL in each merchant dashboard.
+
+### Cards (Visa / Mastercard)
+
+Open a merchant account with an acquirer that settles in Haiti, then:
+
+1. Put the **secret** key in `CARD_SECRET_KEY` (above). It stays in Secret
+   Manager and is used only by `createPayment`.
+2. Pass the **publishable** key and tokenization endpoint to the build:
+
+   ```
+   flutter build appbundle --release \
+     --dart-define=DEMO_MODE=false \
+     --dart-define=CARD_TOKENIZATION_URL=https://api.<acquirer>.com/tokens \
+     --dart-define=CARD_PUBLISHABLE_KEY=pk_live_...
+   ```
+
+   Skip step 2 and the app uses the acquirer's hosted checkout page instead —
+   less to integrate, and no card data in the app at all.
+3. Enable 3-D Secure in the acquirer dashboard. The challenge URL comes back
+   from `createPayment` and the app opens it; the invoice is settled by the
+   webhook, never by the app.
+
+The card number never reaches Firestore or Cloud Functions, which keeps this
+deployment out of PCI DSS SAQ-D scope. Confirm the exact scope with your
+acquirer before going live — it depends on which of the two integrations above
+you chose. The brand marks in `lib/core/widgets/card_brand_mark.dart` are
+neutral stand-ins; replace them with the official artwork from each scheme's
+brand centre before store submission.
 
 ## 3. Seed data and create the first admin
 

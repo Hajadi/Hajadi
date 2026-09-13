@@ -6,8 +6,11 @@ import '../../core/constants/service_categories.dart';
 import '../../core/localization/app_localizations.dart';
 import '../../core/routing/routes.dart';
 import '../../core/theme/app_theme.dart';
+import '../../core/utils/card_utils.dart';
 import '../../core/utils/formatters.dart';
+import '../../core/utils/payment_labels.dart';
 import '../../core/widgets/app_avatar.dart';
+import '../../core/widgets/card_brand_mark.dart';
 import '../../core/widgets/common.dart';
 import '../../models/invoice.dart';
 import '../../models/job_request.dart';
@@ -122,13 +125,9 @@ class JobDetailScreen extends StatelessWidget {
                   value: Formatters.money(job.billableAmount, localeCode),
                 ),
                 _Row(
-                  icon: Icons.account_balance_wallet_outlined,
+                  icon: job.paymentMethod.icon,
                   label: s.paymentMethod,
-                  value: switch (job.paymentMethod) {
-                    PaymentMethod.moncash => s.moncash,
-                    PaymentMethod.natcash => s.natcash,
-                    PaymentMethod.cash => s.cash,
-                  },
+                  value: job.paymentMethod.label(s),
                 ),
               ],
             ),
@@ -275,6 +274,23 @@ class _InvoiceSection extends StatelessWidget {
                 label: s.total,
                 value: Formatters.money(invoice.total, localeCode),
               ),
+              if (invoice.cardLast4 != null)
+                Padding(
+                  padding: const EdgeInsets.only(bottom: AppSpacing.sm),
+                  child: Row(
+                    children: <Widget>[
+                      CardBrandMark(
+                        brand: CardBrand.fromId(invoice.cardBrand),
+                        height: 18,
+                      ),
+                      const SizedBox(width: AppSpacing.sm),
+                      Text(
+                        s.savedCard(last4: invoice.cardLast4!),
+                        style: theme.textTheme.bodySmall,
+                      ),
+                    ],
+                  ),
+                ),
               if (!asWorker && invoice.status != PaymentStatus.paid)
                 FilledButton.icon(
                   onPressed: () => showPaymentSheet(context, invoice: invoice),

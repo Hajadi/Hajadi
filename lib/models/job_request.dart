@@ -30,6 +30,7 @@ enum JobStatus {
 enum PaymentMethod {
   moncash('moncash'),
   natcash('natcash'),
+  card('card'),
   cash('cash');
 
   const PaymentMethod(this.id);
@@ -38,9 +39,17 @@ enum PaymentMethod {
 
   static PaymentMethod fromId(String? id) => switch (id) {
         'natcash' => PaymentMethod.natcash,
+        'card' => PaymentMethod.card,
         'cash' => PaymentMethod.cash,
         _ => PaymentMethod.moncash,
       };
+
+  /// Methods that settle through a provider rather than hand to hand.
+  bool get isElectronic => this != PaymentMethod.cash;
+
+  /// Methods that need a phone number to charge (the mobile wallets).
+  bool get needsPayerPhone =>
+      this == PaymentMethod.moncash || this == PaymentMethod.natcash;
 }
 
 /// A row in `jobs/{jobId}`: one customer asking one worker for one job.

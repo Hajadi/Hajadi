@@ -32,7 +32,7 @@
     "customerId": "customer_2",
     "customerName": "Ricardo Sainvil",
     "customerPhotoUrl": "https://api.dicebear.com/7.x/avataaars/png?seed=customer_2&backgroundColor=0A6CFF",
-    "rating": 5.0,
+    "rating": 4.0,
     "comment": "Profesyonèl et ponctuel, je referai appel à lui.",
     "status": "published",
     "workerReply": null,
@@ -71,7 +71,7 @@
     "customerId": "customer_10",
     "customerName": "Wilner Toussaint",
     "customerPhotoUrl": "https://api.dicebear.com/7.x/avataaars/png?seed=customer_10&backgroundColor=0A6CFF",
-    "rating": 4.0,
+    "rating": 4.5,
     "comment": "Bon travay, li rive alè epi li kite kay la pwòp.",
     "status": "published",
     "workerReply": null,
@@ -84,11 +84,11 @@
     "customerId": "customer_11",
     "customerName": "Micheline Pierre",
     "customerPhotoUrl": "https://api.dicebear.com/7.x/avataaars/png?seed=customer_11&backgroundColor=0A6CFF",
-    "rating": 5.0,
+    "rating": 4.5,
     "comment": "Travay la byen fèt, pri a te rezonab. Mwen rekòmande.",
     "status": "published",
     "workerReply": null,
-    "createdAt": "2026-08-16T04:30:00Z"
+    "createdAt": "2026-06-29T05:30:00Z"
   },
   {
     "id": "review_13",
@@ -97,11 +97,11 @@
     "customerId": "demo_customer",
     "customerName": "Marie-Ange Prophète",
     "customerPhotoUrl": "https://api.dicebear.com/7.x/avataaars/png?seed=marie-ange&backgroundColor=0A6CFF",
-    "rating": 5.0,
+    "rating": 4.5,
     "comment": "Profesyonèl et ponctuel, je referai appel à lui.",
     "status": "published",
     "workerReply": "Mèsi pou konfyans ou!",
-    "createdAt": "2026-08-27T02:30:00Z"
+    "createdAt": "2026-06-22T17:30:00Z"
   },
   {
     "id": "review_18",
@@ -110,10 +110,10 @@
     "customerId": "customer_17",
     "customerName": "Darline Delva",
     "customerPhotoUrl": "https://api.dicebear.com/7.x/avataaars/png?seed=customer_17&backgroundColor=0A6CFF",
-    "rating": 4.0,
+    "rating": 5.0,
     "comment": "Profesyonèl et ponctuel, je referai appel à lui.",
     "status": "published",
     "workerReply": null,
-    "createdAt": "2026-08-14T22:30:00Z"
+    "createdAt": "2026-08-24T18:30:00Z"
   }
 ]

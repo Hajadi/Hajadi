@@ -585,7 +585,7 @@
     "fullName": "Micheline Pierre",
     "role": "customer",
     "email": "customer_11@demo.ht",
-    "phone": "+50949371646",
+    "phone": "+50944912548",
     "photoUrl": "https://api.dicebear.com/7.x/avataaars/png?seed=customer_11&backgroundColor=0A6CFF",
     "languageCode": "fr",
     "departmentId": "ouest",
@@ -594,14 +594,14 @@
     "status": "active",
     "favoriteWorkerIds": [],
     "fcmTokens": [],
-    "createdAt": "2026-07-12T09:30:00Z"
+    "createdAt": "2026-06-05T09:30:00Z"
   },
   {
     "id": "customer_13",
     "fullName": "Fabiola Pierre-Louis",
     "role": "customer",
     "email": "customer_13@demo.ht",
-    "phone": "+50935931935",
+    "phone": "+50931017327",
     "photoUrl": "https://api.dicebear.com/7.x/avataaars/png?seed=customer_13&backgroundColor=0A6CFF",
     "languageCode": "fr",
     "departmentId": "ouest",
@@ -610,14 +610,14 @@
     "status": "active",
     "favoriteWorkerIds": [],
     "fcmTokens": [],
-    "createdAt": "2026-08-19T09:30:00Z"
+    "createdAt": "2026-01-31T09:30:00Z"
   },
   {
     "id": "customer_14",
     "fullName": "Dieuseul Beauvoir",
     "role": "customer",
     "email": "customer_14@demo.ht",
-    "phone": "+50941444422",
+    "phone": "+50931228044",
     "photoUrl": "https://api.dicebear.com/7.x/avataaars/png?seed=customer_14&backgroundColor=0A6CFF",
     "languageCode": "ht",
     "departmentId": "nord",
@@ -626,14 +626,14 @@
     "status": "active",
     "favoriteWorkerIds": [],
     "fcmTokens": [],
-    "createdAt": "2025-11-26T09:30:00Z"
+    "createdAt": "2026-08-15T09:30:00Z"
   },
   {
     "id": "customer_16",
     "fullName": "Emmanuel Dorvil",
     "role": "customer",
     "email": "customer_16@demo.ht",
-    "phone": "+50935850185",
+    "phone": "+50936938639",
     "photoUrl": "https://api.dicebear.com/7.x/avataaars/png?seed=customer_16&backgroundColor=0A6CFF",
     "languageCode": "ht",
     "departmentId": "nord",
@@ -642,14 +642,14 @@
     "status": "active",
     "favoriteWorkerIds": [],
     "fcmTokens": [],
-    "createdAt": "2026-02-05T09:30:00Z"
+    "createdAt": "2026-08-26T09:30:00Z"
   },
   {
     "id": "customer_17",
     "fullName": "Darline Delva",
     "role": "customer",
     "email": "customer_17@demo.ht",
-    "phone": "+50936697099",
+    "phone": "+50938447397",
     "photoUrl": "https://api.dicebear.com/7.x/avataaars/png?seed=customer_17&backgroundColor=0A6CFF",
     "languageCode": "fr",
     "departmentId": "sud",
@@ -658,6 +658,6 @@
     "status": "active",
     "favoriteWorkerIds": [],
     "fcmTokens": [],
-    "createdAt": "2026-07-26T09:30:00Z"
+    "createdAt": "2026-02-27T09:30:00Z"
   }
 ]

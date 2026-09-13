@@ -3,7 +3,9 @@ import 'package:provider/provider.dart';
 
 import '../../core/localization/app_localizations.dart';
 import '../../core/theme/app_theme.dart';
+import '../../core/utils/card_utils.dart';
 import '../../core/utils/formatters.dart';
+import '../../core/widgets/card_brand_mark.dart';
 import '../../core/widgets/common.dart';
 import '../../models/invoice.dart';
 import '../../viewmodels/payment_view_model.dart';
@@ -99,6 +101,22 @@ class EarningsScreen extends StatelessWidget {
                             ' · ${Formatters.date(invoice.issuedAt, localeCode)}',
                             style: Theme.of(context).textTheme.bodySmall,
                           ),
+                          if (invoice.cardLast4 != null) ...<Widget>[
+                            const SizedBox(height: 4),
+                            Row(
+                              children: <Widget>[
+                                CardBrandMark(
+                                  brand: CardBrand.fromId(invoice.cardBrand),
+                                  height: 16,
+                                ),
+                                const SizedBox(width: 6),
+                                Text(
+                                  CardUtils.mask(invoice.cardLast4!),
+                                  style: Theme.of(context).textTheme.bodySmall,
+                                ),
+                              ],
+                            ),
+                          ],
                         ],
                       ),
                     ),

@@ -40,6 +40,8 @@ class Invoice {
     required this.status,
     this.currency = 'HTG',
     this.transactionRef,
+    this.cardBrand,
+    this.cardLast4,
     this.issuedAt,
     this.paidAt,
   });
@@ -57,6 +59,10 @@ class Invoice {
   final PaymentMethod method;
   final PaymentStatus status;
   final String? transactionRef;
+
+  /// Card receipts keep the brand and the last four digits — never more.
+  final String? cardBrand;
+  final String? cardLast4;
   final DateTime? issuedAt;
   final DateTime? paidAt;
 
@@ -79,6 +85,8 @@ class Invoice {
         method: PaymentMethod.fromId(Json.asStringOrNull(map['method'])),
         status: PaymentStatus.fromId(Json.asStringOrNull(map['status'])),
         transactionRef: Json.asStringOrNull(map['transactionRef']),
+        cardBrand: Json.asStringOrNull(map['cardBrand']),
+        cardLast4: Json.asStringOrNull(map['cardLast4']),
         issuedAt: Json.asDateOrNull(map['issuedAt']),
         paidAt: Json.asDateOrNull(map['paidAt']),
       );
@@ -96,13 +104,18 @@ class Invoice {
         'method': method.id,
         'status': status.id,
         'transactionRef': transactionRef,
+        'cardBrand': cardBrand,
+        'cardLast4': cardLast4,
         'issuedAt': issuedAt?.toIso8601String(),
         'paidAt': paidAt?.toIso8601String(),
       };
 
   Invoice copyWith({
     PaymentStatus? status,
+    PaymentMethod? method,
     String? transactionRef,
+    String? cardBrand,
+    String? cardLast4,
     DateTime? paidAt,
   }) =>
       Invoice(
@@ -116,9 +129,11 @@ class Invoice {
         subtotal: subtotal,
         serviceFee: serviceFee,
         currency: currency,
-        method: method,
+        method: method ?? this.method,
         status: status ?? this.status,
         transactionRef: transactionRef ?? this.transactionRef,
+        cardBrand: cardBrand ?? this.cardBrand,
+        cardLast4: cardLast4 ?? this.cardLast4,
         issuedAt: issuedAt,
         paidAt: paidAt ?? this.paidAt,
       );

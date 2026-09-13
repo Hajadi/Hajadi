@@ -65,7 +65,7 @@ The public, searchable half of a worker account. Same id as `users/{uid}`.
 | `portfolio` | array<map> | `{id, imageUrl, caption, categoryId, uploadedAt}` |
 | `certificates` | array<map> | `{id, title, fileUrl, issuer, issuedAt}` |
 | `latitude`, `longitude` | number? | distance filter and map pins |
-| `acceptedPaymentMethods` | string[] | subset of `moncash`, `natcash`, `cash` |
+| `acceptedPaymentMethods` | string[] | subset of `moncash`, `natcash`, `card`, `cash` |
 | `suspended` | bool | **server-owned**; mirrors `users.status` |
 
 Search hits the indexed predicates server-side (`suspended`, `categoryIds`,
@@ -86,7 +86,7 @@ One customer asking one worker for one job.
 | `categoryId` | string | |
 | `description` | string | |
 | `status` | string | `pending` → `accepted` → `in_progress` → `completed`; or `rejected` / `cancelled` |
-| `paymentMethod` | string | `moncash` \| `natcash` \| `cash` |
+| `paymentMethod` | string | `moncash` \| `natcash` \| `card` \| `cash` |
 | `departmentId`, `city`, `addressNote` | string? | |
 | `latitude`, `longitude` | number? | |
 | `budget` | number | what the customer proposed |
@@ -143,12 +143,19 @@ except for `readBy`.
 | `subtotal` | number | what the worker earns |
 | `serviceFee` | number | platform commission, stored per invoice so a later rate change never rewrites history |
 | `currency` | string | `HTG` |
-| `method` | string | `moncash` \| `natcash` \| `cash` |
+| `method` | string | `moncash` \| `natcash` \| `card` \| `cash` |
 | `status` | string | `unpaid` \| `processing` \| `paid` \| `failed` \| `refunded` — **server-owned** after creation |
 | `transactionRef` | string? | provider reference |
+| `cardBrand` | string? | `visa` \| `mastercard` — receipts only |
+| `cardLast4` | string? | exactly four digits |
 | `issuedAt`, `paidAt` | timestamp? | |
 
 Total = `subtotal + serviceFee`; worker payout = `subtotal`.
+
+A card number, expiry or CVC must **never** be written to Firestore. The
+device tokenizes with the acquirer, and `cardBrand` / `cardLast4` are all
+that come back for the receipt; `functions/index.js` truncates `cardLast4`
+server-side as a second line of defence.
 
 ---
 

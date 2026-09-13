@@ -8,6 +8,7 @@ import '../../core/localization/app_localizations.dart';
 import '../../core/routing/routes.dart';
 import '../../core/theme/app_theme.dart';
 import '../../core/utils/formatters.dart';
+import '../../core/utils/payment_labels.dart';
 import '../../core/widgets/app_avatar.dart';
 import '../../core/widgets/common.dart';
 import '../../models/job_request.dart';
@@ -32,12 +33,6 @@ class _BookingScreenState extends State<BookingScreen> {
     _budget.dispose();
     super.dispose();
   }
-
-  String _methodLabel(Strings s, PaymentMethod method) => switch (method) {
-        PaymentMethod.moncash => s.moncash,
-        PaymentMethod.natcash => s.natcash,
-        PaymentMethod.cash => s.cash,
-      };
 
   @override
   Widget build(BuildContext context) {
@@ -237,7 +232,8 @@ class _BookingScreenState extends State<BookingScreen> {
             children: <Widget>[
               for (final PaymentMethod method in booking.availableMethods)
                 ChoiceChip(
-                  label: Text(_methodLabel(s, method)),
+                  avatar: Icon(method.icon, size: 16),
+                  label: Text(method.label(s)),
                   selected: booking.paymentMethod == method,
                   onSelected: (_) => booking.setPaymentMethod(method),
                 ),

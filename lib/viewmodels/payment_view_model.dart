@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:flutter/foundation.dart';
+
 import '../models/invoice.dart';
 import '../models/job_request.dart';
 import '../services/payment_service.dart';
@@ -20,37 +22,60 @@ class PaymentViewModel extends BaseViewModel {
           ? _services.data.watchInvoicesForWorker(userId)
           : _services.data.watchInvoicesForCustomer(userId);
 
-  /// Charges the wallet, then reflects the outcome on the invoice.
+  /// Charges the chosen method, then reflects the outcome on the invoice.
   ///
-  /// Cash stays `unpaid` until the worker confirms they were handed the money;
-  /// wallet payments that need a hosted page come back `processing` and are
-  /// settled by the provider webhook.
+  /// Cash stays `unpaid` until the worker confirms they were handed the money.
+  /// Wallet and card payments that need a hosted page (or a 3-D Secure
+  /// challenge) come back `processing` and are settled by the provider
+  /// webhook, never by the client's word for it.
+  ///
+  /// [card] is only read for [PaymentMethod.card]; it is exchanged for a
+  /// single-use token inside the service and never reaches our backend.
   Future<PaymentIntent?> pay({
     required Invoice invoice,
     required PaymentMethod method,
-    required String payerPhone,
+    String payerPhone = '',
+    CardDetails? card,
   }) async {
-    final PaymentIntent? intent = await guard<PaymentIntent>(() async {
-      // The function verifies this token before touching the wallet APIs.
+    setBusy(true);
+    setError(null);
+    try {
+      // The function verifies this token before touching any provider API.
       final String token = await _services.auth.idToken() ?? '';
       final PaymentIntent result = await _services.payments.charge(
         invoice: invoice,
         method: method,
-        payerPhone: payerPhone,
         idToken: token,
+        payerPhone: payerPhone,
+        card: card,
       );
+
       if (result.status != PaymentStatus.unpaid) {
         await _services.data.updateInvoiceStatus(
           invoice.id,
           result.status,
+          method: method,
           transactionRef: result.reference,
+          cardBrand: result.cardBrand?.id,
+          cardLast4: result.cardLast4,
         );
       }
+      _intent = result;
       return result;
-    }, errorKey: 'paymentFailed');
-    _intent = intent;
-    safeNotify();
-    return intent;
+    } on PaymentException catch (error) {
+      // Card validation failures carry a catalog key; provider failures fall
+      // back to the generic payment message.
+      debugPrint('payment failed: $error');
+      setError(error.messageKey);
+      return null;
+    } catch (error, stack) {
+      debugPrint('payment failed: $error\n$stack');
+      setError('paymentFailed');
+      return null;
+    } finally {
+      setBusy(false);
+      safeNotify();
+    }
   }
 
   /// The worker acknowledging cash in hand.

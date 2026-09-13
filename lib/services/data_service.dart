@@ -136,10 +136,15 @@ abstract class DataService {
 
   Stream<List<Invoice>> watchInvoicesForWorker(String workerId);
 
+  /// Settles or re-labels an invoice. [cardBrand] / [cardLast4] are the only
+  /// card details that may ever be stored — never the number itself.
   Future<void> updateInvoiceStatus(
     String invoiceId,
     PaymentStatus status, {
+    PaymentMethod? method,
     String? transactionRef,
+    String? cardBrand,
+    String? cardLast4,
   });
 
   // --------------------------------------------------- trust & moderation

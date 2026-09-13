@@ -601,7 +601,10 @@ class DemoDataService implements DataService {
   Future<void> updateInvoiceStatus(
     String invoiceId,
     PaymentStatus status, {
+    PaymentMethod? method,
     String? transactionRef,
+    String? cardBrand,
+    String? cardLast4,
   }) async {
     await _ready;
     final int index =
@@ -609,7 +612,10 @@ class DemoDataService implements DataService {
     if (index >= 0) {
       _invoices[index] = _invoices[index].copyWith(
         status: status,
+        method: method,
         transactionRef: transactionRef,
+        cardBrand: cardBrand,
+        cardLast4: cardLast4,
         paidAt: status == PaymentStatus.paid ? DateTime.now() : null,
       );
       _emit();

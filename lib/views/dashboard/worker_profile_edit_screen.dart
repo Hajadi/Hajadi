@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 import '../../core/constants/haiti_departments.dart';
 import '../../core/constants/service_categories.dart';
 import '../../core/localization/app_localizations.dart';
+import '../../core/utils/payment_labels.dart';
 import '../../core/theme/app_theme.dart';
 import '../../core/widgets/app_avatar.dart';
 import '../../core/widgets/common.dart';
@@ -294,11 +295,8 @@ class _WorkerProfileEditScreenState extends State<WorkerProfileEditScreen> {
             children: <Widget>[
               for (final PaymentMethod method in PaymentMethod.values)
                 FilterChip(
-                  label: Text(switch (method) {
-                    PaymentMethod.moncash => s.moncash,
-                    PaymentMethod.natcash => s.natcash,
-                    PaymentMethod.cash => s.cash,
-                  }),
+                  avatar: Icon(method.icon, size: 16),
+                  label: Text(method.label(s)),
                   selected: _methods.contains(method.id),
                   onSelected: (bool value) => setState(() {
                     if (value) {

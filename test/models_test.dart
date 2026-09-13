@@ -106,6 +106,56 @@ void main() {
         PaymentStatus.paid,
       );
     });
+
+    test('card receipts round-trip brand and last four, and nothing more', () {
+      const Invoice invoice = Invoice(
+        id: 'i2',
+        number: 'JM-2026-1002',
+        jobId: 'j2',
+        customerId: 'c1',
+        customerName: 'Kliyan',
+        workerId: 'w1',
+        workerName: 'Bòs',
+        subtotal: 3000,
+        serviceFee: 300,
+        method: PaymentMethod.card,
+        status: PaymentStatus.paid,
+        cardBrand: 'visa',
+        cardLast4: '4242',
+      );
+      final Invoice parsed = Invoice.fromMap('i2', invoice.toMap());
+
+      expect(parsed.method, PaymentMethod.card);
+      expect(parsed.cardBrand, 'visa');
+      expect(parsed.cardLast4, '4242');
+      // The serialized form carries no field that could hold a full number.
+      expect(invoice.toMap().containsKey('cardNumber'), isFalse);
+      expect(invoice.toMap()['cardLast4'].toString().length, 4);
+    });
+
+    test('copyWith can relabel the method chosen at checkout', () {
+      const Invoice invoice = Invoice(
+        id: 'i3',
+        number: 'JM-2026-1003',
+        jobId: 'j3',
+        customerId: 'c1',
+        customerName: 'Kliyan',
+        workerId: 'w1',
+        workerName: 'Bòs',
+        subtotal: 1000,
+        serviceFee: 100,
+        method: PaymentMethod.moncash,
+        status: PaymentStatus.unpaid,
+      );
+      final Invoice paidByCard = invoice.copyWith(
+        method: PaymentMethod.card,
+        status: PaymentStatus.paid,
+        cardBrand: 'mastercard',
+        cardLast4: '4444',
+      );
+      expect(paidByCard.method, PaymentMethod.card);
+      expect(paidByCard.cardBrand, 'mastercard');
+    });
   });
 
   group('JobRequest', () {

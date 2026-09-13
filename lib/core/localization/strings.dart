@@ -546,6 +546,55 @@ class Strings {
   /// en: Cash
   String get cash => _l.raw('cash');
 
+  /// en: Debit / credit card
+  String get card => _l.raw('card');
+
+  /// en: Card details
+  String get cardDetails => _l.raw('cardDetails');
+
+  /// en: Card number
+  String get cardNumber => _l.raw('cardNumber');
+
+  /// en: Expiry (MM/YY)
+  String get cardExpiry => _l.raw('cardExpiry');
+
+  /// en: Security code
+  String get cardCvc => _l.raw('cardCvc');
+
+  /// en: Name on card
+  String get cardHolder => _l.raw('cardHolder');
+
+  /// en: Visa and Mastercard accepted
+  String get acceptedCards => _l.raw('acceptedCards');
+
+  /// en: Your card goes straight to our payment provider. Jwenn Mèt never sees or stores the number.
+  String get cardSecureNote => _l.raw('cardSecureNote');
+
+  /// en: You will finish the payment on your bank's secure page.
+  String get cardRedirectNote => _l.raw('cardRedirectNote');
+
+  /// en: Check the card number.
+  String get invalidCard => _l.raw('invalidCard');
+
+  /// en: We accept Visa and Mastercard only.
+  String get cardBrandNotAccepted => _l.raw('cardBrandNotAccepted');
+
+  /// en: Enter the expiry as MM/YY.
+  String get invalidExpiry => _l.raw('invalidExpiry');
+
+  /// en: That card has expired.
+  String get cardExpired => _l.raw('cardExpired');
+
+  /// en: Check the security code.
+  String get invalidCvc => _l.raw('invalidCvc');
+
+  /// en: Enter the name printed on the card.
+  String get cardHolderRequired => _l.raw('cardHolderRequired');
+
+  /// en: Card ending {last4}
+  String savedCard({required Object? last4}) =>
+      _l.sub('savedCard', <String, Object?>{'last4': last4});
+
   /// en: Pending
   String get statusPending => _l.raw('statusPending');
 
