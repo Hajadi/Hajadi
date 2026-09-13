@@ -1,0 +1,66 @@
+{
+  "demo_customer": [
+    {
+      "id": "n1",
+      "type": "job_accepted",
+      "messageKey": "notifAccepted",
+      "args": {
+        "name": "Roseline Noël"
+      },
+      "jobId": "job_2",
+      "read": false,
+      "createdAt": "2026-09-13T06:30:00Z"
+    },
+    {
+      "id": "n2",
+      "type": "message",
+      "messageKey": "notifNewMessage",
+      "args": {
+        "name": "Roseline Noël"
+      },
+      "conversationId": "demo_customer_worker_3",
+      "read": false,
+      "createdAt": "2026-09-13T04:30:00Z"
+    },
+    {
+      "id": "n3",
+      "type": "payment",
+      "messageKey": "paymentSuccess",
+      "args": {},
+      "jobId": "job_1",
+      "read": true,
+      "createdAt": "2026-09-11T09:30:00Z"
+    }
+  ],
+  "demo_worker": [
+    {
+      "id": "n4",
+      "type": "job_request",
+      "messageKey": "notifNewRequest",
+      "args": {
+        "name": "Marie-Ange Prophète"
+      },
+      "jobId": "job_4",
+      "read": false,
+      "createdAt": "2026-09-13T08:30:00Z"
+    },
+    {
+      "id": "n5",
+      "type": "review",
+      "messageKey": "notifReviewReceived",
+      "args": {
+        "name": "Marie-Ange Prophète"
+      },
+      "read": true,
+      "createdAt": "2026-09-09T09:30:00Z"
+    },
+    {
+      "id": "n6",
+      "type": "verification",
+      "messageKey": "notifVerified",
+      "args": {},
+      "read": true,
+      "createdAt": "2026-08-14T09:30:00Z"
+    }
+  ]
+}

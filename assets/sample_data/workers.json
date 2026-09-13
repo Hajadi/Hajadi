@@ -1,0 +1,1449 @@
+[
+  {
+    "id": "demo_worker",
+    "fullName": "Wilner Dorcéus",
+    "categoryIds": [
+      "electrician",
+      "plumber"
+    ],
+    "departmentId": "ouest",
+    "city": "Port-au-Prince",
+    "headline": "Enstalasyon ak pàn elektrik",
+    "bio": "Wilner Dorcéus — wiring, breakers and inverter setups. 10 ane eksperyans nan Port-au-Prince ak zòn nan. Travay garanti, devi gratis anvan chak travay.",
+    "photoUrl": "https://api.dicebear.com/7.x/avataaars/png?seed=demo_worker&backgroundColor=0A6CFF",
+    "phone": "+50938946809",
+    "hourlyRate": 1800.0,
+    "currency": "HTG",
+    "rating": 4.5,
+    "reviewCount": 43,
+    "jobsCompleted": 45,
+    "yearsExperience": 8,
+    "verification": "approved",
+    "availableNow": true,
+    "serviceDepartmentIds": [
+      "nord",
+      "ouest"
+    ],
+    "serviceCities": [
+      "Port-au-Prince",
+      "Delmas",
+      "Pétion-Ville"
+    ],
+    "portfolio": [
+      {
+        "id": "demo_worker_p1",
+        "imageUrl": "https://images.jwennmet.ht/portfolio/electrician_1.jpg",
+        "caption": "Travay fini",
+        "categoryId": "electrician",
+        "uploadedAt": "2026-07-04T09:30:00Z"
+      }
+    ],
+    "certificates": [
+      {
+        "id": "demo_worker_c1",
+        "title": "INFP — Sètifika pwofesyonèl",
+        "fileUrl": "https://files.jwennmet.ht/certificates/demo_worker.pdf",
+        "issuer": "Institut National de Formation Professionnelle",
+        "issuedAt": "2024-05-30T09:30:00Z"
+      }
+    ],
+    "latitude": 18.57554,
+    "longitude": -72.26454,
+    "acceptedPaymentMethods": [
+      "moncash",
+      "cash"
+    ],
+    "suspended": false,
+    "createdAt": "2026-04-23T09:30:00Z"
+  },
+  {
+    "id": "worker_1",
+    "fullName": "Marie Saintil",
+    "categoryIds": [
+      "plumber"
+    ],
+    "departmentId": "nord",
+    "city": "Limbé",
+    "headline": "Plomberie et réservoirs",
+    "bio": "Marie Saintil — leaks, tanks and bathroom fittings. 15 ane eksperyans nan Limbé ak zòn nan. Travay garanti, devi gratis anvan chak travay.",
+    "photoUrl": "https://api.dicebear.com/7.x/avataaars/png?seed=worker_1&backgroundColor=0A6CFF",
+    "phone": "+50942476671",
+    "hourlyRate": 650.0,
+    "currency": "HTG",
+    "rating": 3.6,
+    "reviewCount": 57,
+    "jobsCompleted": 76,
+    "yearsExperience": 10,
+    "verification": "approved",
+    "availableNow": true,
+    "serviceDepartmentIds": [
+      "nord",
+      "nord_est"
+    ],
+    "serviceCities": [
+      "Cap-Haïtien",
+      "Limbé",
+      "Milot"
+    ],
+    "portfolio": [
+      {
+        "id": "worker_1_p1",
+        "imageUrl": "https://images.jwennmet.ht/portfolio/plumber_1.jpg",
+        "caption": "Travay fini",
+        "categoryId": "plumber",
+        "uploadedAt": "2026-06-17T09:30:00Z"
+      }
+    ],
+    "certificates": [],
+    "latitude": 19.76342,
+    "longitude": -72.25308,
+    "acceptedPaymentMethods": [
+      "moncash",
+      "natcash",
+      "cash"
+    ],
+    "suspended": false,
+    "createdAt": "2026-03-14T09:30:00Z"
+  },
+  {
+    "id": "worker_2",
+    "fullName": "Wilner Toussaint",
+    "categoryIds": [
+      "carpenter"
+    ],
+    "departmentId": "nord_est",
+    "city": "Fort-Liberté",
+    "headline": "Doors, cabinets and roof framing",
+    "bio": "Wilner Toussaint — doors, cabinets and roof framing. 3 ane eksperyans nan Fort-Liberté ak zòn nan. Travay garanti, devi gratis anvan chak travay.",
+    "photoUrl": "https://api.dicebear.com/7.x/avataaars/png?seed=worker_2&backgroundColor=0A6CFF",
+    "phone": "+50932680090",
+    "hourlyRate": 900.0,
+    "currency": "HTG",
+    "rating": 5.0,
+    "reviewCount": 54,
+    "jobsCompleted": 94,
+    "yearsExperience": 12,
+    "verification": "approved",
+    "availableNow": false,
+    "serviceDepartmentIds": [
+      "nord_est",
+      "nord_ouest"
+    ],
+    "serviceCities": [
+      "Fort-Liberté",
+      "Ouanaminthe"
+    ],
+    "portfolio": [
+      {
+        "id": "worker_2_p1",
+        "imageUrl": "https://images.jwennmet.ht/portfolio/carpenter_1.jpg",
+        "caption": "Travay fini",
+        "categoryId": "carpenter",
+        "uploadedAt": "2026-05-10T09:30:00Z"
+      },
+      {
+        "id": "worker_2_p2",
+        "imageUrl": "https://images.jwennmet.ht/portfolio/carpenter_2.jpg",
+        "caption": "Chantye an kou",
+        "categoryId": "carpenter",
+        "uploadedAt": "2026-06-11T09:30:00Z"
+      },
+      {
+        "id": "worker_2_p3",
+        "imageUrl": "https://images.jwennmet.ht/portfolio/carpenter_3.jpg",
+        "caption": "Detay fini an",
+        "categoryId": "carpenter",
+        "uploadedAt": "2026-05-15T09:30:00Z"
+      }
+    ],
+    "certificates": [
+      {
+        "id": "worker_2_c1",
+        "title": "INFP — Sètifika pwofesyonèl",
+        "fileUrl": "https://files.jwennmet.ht/certificates/worker_2.pdf",
+        "issuer": "Institut National de Formation Professionnelle",
+        "issuedAt": "2023-05-21T09:30:00Z"
+      }
+    ],
+    "latitude": 19.7319,
+    "longitude": -71.79327,
+    "acceptedPaymentMethods": [
+      "moncash",
+      "natcash",
+      "cash"
+    ],
+    "suspended": false,
+    "createdAt": "2025-10-12T09:30:00Z"
+  },
+  {
+    "id": "worker_3",
+    "fullName": "Roseline Noël",
+    "categoryIds": [
+      "mason",
+      "electrician"
+    ],
+    "departmentId": "nord_ouest",
+    "city": "Jean-Rabel",
+    "headline": "Mason ak beton",
+    "bio": "Roseline Noël — blockwork, plaster and concrete slabs. 16 ane eksperyans nan Jean-Rabel ak zòn nan. Travay garanti, devi gratis anvan chak travay.",
+    "photoUrl": "https://api.dicebear.com/7.x/avataaars/png?seed=worker_3&backgroundColor=0A6CFF",
+    "phone": "+50937867552",
+    "hourlyRate": 1400.0,
+    "currency": "HTG",
+    "rating": 4.6,
+    "reviewCount": 96,
+    "jobsCompleted": 111,
+    "yearsExperience": 20,
+    "verification": "approved",
+    "availableNow": true,
+    "serviceDepartmentIds": [
+      "artibonite",
+      "nord_ouest"
+    ],
+    "serviceCities": [
+      "Port-de-Paix",
+      "Jean-Rabel"
+    ],
+    "portfolio": [
+      {
+        "id": "worker_3_p1",
+        "imageUrl": "https://images.jwennmet.ht/portfolio/mason_1.jpg",
+        "caption": "Travay fini",
+        "categoryId": "mason",
+        "uploadedAt": "2026-07-06T09:30:00Z"
+      },
+      {
+        "id": "worker_3_p2",
+        "imageUrl": "https://images.jwennmet.ht/portfolio/mason_2.jpg",
+        "caption": "Chantye an kou",
+        "categoryId": "mason",
+        "uploadedAt": "2026-07-04T09:30:00Z"
+      }
+    ],
+    "certificates": [],
+    "latitude": 19.87132,
+    "longitude": -72.84739,
+    "acceptedPaymentMethods": [
+      "moncash",
+      "natcash",
+      "cash"
+    ],
+    "suspended": false,
+    "createdAt": "2026-08-11T09:30:00Z"
+  },
+  {
+    "id": "worker_4",
+    "fullName": "Jacques Joseph",
+    "categoryIds": [
+      "mechanic"
+    ],
+    "departmentId": "artibonite",
+    "city": "Saint-Marc",
+    "headline": "Mécanique auto et moto",
+    "bio": "Jacques Joseph — engine, brakes and roadside repair. 8 ane eksperyans nan Saint-Marc ak zòn nan. Travay garanti, devi gratis anvan chak travay.",
+    "photoUrl": "https://api.dicebear.com/7.x/avataaars/png?seed=worker_4&backgroundColor=0A6CFF",
+    "phone": "+50934853024",
+    "hourlyRate": 500.0,
+    "currency": "HTG",
+    "rating": 3.8,
+    "reviewCount": 53,
+    "jobsCompleted": 86,
+    "yearsExperience": 22,
+    "verification": "unverified",
+    "availableNow": true,
+    "serviceDepartmentIds": [
+      "artibonite",
+      "centre"
+    ],
+    "serviceCities": [
+      "Gonaïves",
+      "Saint-Marc",
+      "Dessalines"
+    ],
+    "portfolio": [
+      {
+        "id": "worker_4_p1",
+        "imageUrl": "https://images.jwennmet.ht/portfolio/mechanic_1.jpg",
+        "caption": "Travay fini",
+        "categoryId": "mechanic",
+        "uploadedAt": "2026-08-25T09:30:00Z"
+      },
+      {
+        "id": "worker_4_p2",
+        "imageUrl": "https://images.jwennmet.ht/portfolio/mechanic_2.jpg",
+        "caption": "Chantye an kou",
+        "categoryId": "mechanic",
+        "uploadedAt": "2026-05-20T09:30:00Z"
+      }
+    ],
+    "certificates": [],
+    "latitude": 19.39484,
+    "longitude": -72.72415,
+    "acceptedPaymentMethods": [
+      "moncash",
+      "cash"
+    ],
+    "suspended": false,
+    "createdAt": "2026-06-02T09:30:00Z"
+  },
+  {
+    "id": "worker_5",
+    "fullName": "Nadège Alcé",
+    "categoryIds": [
+      "painter"
+    ],
+    "departmentId": "centre",
+    "city": "Mirebalais",
+    "headline": "Interior, exterior and waterproofing",
+    "bio": "Nadège Alcé — interior, exterior and waterproofing. 19 ane eksperyans nan Mirebalais ak zòn nan. Travay garanti, devi gratis anvan chak travay.",
+    "photoUrl": "https://api.dicebear.com/7.x/avataaars/png?seed=worker_5&backgroundColor=0A6CFF",
+    "phone": "+50941607081",
+    "hourlyRate": 1400.0,
+    "currency": "HTG",
+    "rating": 4.1,
+    "reviewCount": 10,
+    "jobsCompleted": 31,
+    "yearsExperience": 14,
+    "verification": "approved",
+    "availableNow": false,
+    "serviceDepartmentIds": [
+      "centre",
+      "sud"
+    ],
+    "serviceCities": [
+      "Hinche",
+      "Mirebalais"
+    ],
+    "portfolio": [
+      {
+        "id": "worker_5_p1",
+        "imageUrl": "https://images.jwennmet.ht/portfolio/painter_1.jpg",
+        "caption": "Travay fini",
+        "categoryId": "painter",
+        "uploadedAt": "2026-04-07T09:30:00Z"
+      },
+      {
+        "id": "worker_5_p2",
+        "imageUrl": "https://images.jwennmet.ht/portfolio/painter_2.jpg",
+        "caption": "Chantye an kou",
+        "categoryId": "painter",
+        "uploadedAt": "2026-07-25T09:30:00Z"
+      },
+      {
+        "id": "worker_5_p3",
+        "imageUrl": "https://images.jwennmet.ht/portfolio/painter_3.jpg",
+        "caption": "Detay fini an",
+        "categoryId": "painter",
+        "uploadedAt": "2026-05-26T09:30:00Z"
+      }
+    ],
+    "certificates": [],
+    "latitude": 19.17965,
+    "longitude": -71.96009,
+    "acceptedPaymentMethods": [
+      "moncash",
+      "natcash",
+      "cash"
+    ],
+    "suspended": false,
+    "createdAt": "2025-05-11T09:30:00Z"
+  },
+  {
+    "id": "worker_6",
+    "fullName": "Frantz Bazile",
+    "categoryIds": [
+      "welder",
+      "ac_technician"
+    ],
+    "departmentId": "sud",
+    "city": "Les Cayes",
+    "headline": "Soude ak feronri",
+    "bio": "Frantz Bazile — gates, grilles and structural welding. 16 ane eksperyans nan Les Cayes ak zòn nan. Travay garanti, devi gratis anvan chak travay.",
+    "photoUrl": "https://api.dicebear.com/7.x/avataaars/png?seed=worker_6&backgroundColor=0A6CFF",
+    "phone": "+50931193013",
+    "hourlyRate": 750.0,
+    "currency": "HTG",
+    "rating": 4.1,
+    "reviewCount": 69,
+    "jobsCompleted": 93,
+    "yearsExperience": 13,
+    "verification": "approved",
+    "availableNow": true,
+    "serviceDepartmentIds": [
+      "sud",
+      "sud_est"
+    ],
+    "serviceCities": [
+      "Les Cayes",
+      "Aquin",
+      "Port-Salut"
+    ],
+    "portfolio": [
+      {
+        "id": "worker_6_p1",
+        "imageUrl": "https://images.jwennmet.ht/portfolio/welder_1.jpg",
+        "caption": "Travay fini",
+        "categoryId": "welder",
+        "uploadedAt": "2026-09-03T09:30:00Z"
+      },
+      {
+        "id": "worker_6_p2",
+        "imageUrl": "https://images.jwennmet.ht/portfolio/welder_2.jpg",
+        "caption": "Chantye an kou",
+        "categoryId": "welder",
+        "uploadedAt": "2026-07-27T09:30:00Z"
+      }
+    ],
+    "certificates": [
+      {
+        "id": "worker_6_c1",
+        "title": "INFP — Sètifika pwofesyonèl",
+        "fileUrl": "https://files.jwennmet.ht/certificates/worker_6.pdf",
+        "issuer": "Institut National de Formation Professionnelle",
+        "issuedAt": "2021-04-01T09:30:00Z"
+      }
+    ],
+    "latitude": 18.12449,
+    "longitude": -73.67775,
+    "acceptedPaymentMethods": [
+      "moncash",
+      "natcash",
+      "cash"
+    ],
+    "suspended": false,
+    "createdAt": "2025-03-27T09:30:00Z"
+  },
+  {
+    "id": "worker_7",
+    "fullName": "Micheline Pierre",
+    "categoryIds": [
+      "cleaner"
+    ],
+    "departmentId": "sud_est",
+    "city": "Marigot",
+    "headline": "Nettoyage maison et bureau",
+    "bio": "Micheline Pierre — homes, offices and post-construction. 20 ane eksperyans nan Marigot ak zòn nan. Travay garanti, devi gratis anvan chak travay.",
+    "photoUrl": "https://api.dicebear.com/7.x/avataaars/png?seed=worker_7&backgroundColor=0A6CFF",
+    "phone": "+50945126177",
+    "hourlyRate": 750.0,
+    "currency": "HTG",
+    "rating": 4.3,
+    "reviewCount": 64,
+    "jobsCompleted": 73,
+    "yearsExperience": 17,
+    "verification": "approved",
+    "availableNow": true,
+    "serviceDepartmentIds": [
+      "grand_anse",
+      "sud_est"
+    ],
+    "serviceCities": [
+      "Jacmel",
+      "Marigot"
+    ],
+    "portfolio": [
+      {
+        "id": "worker_7_p1",
+        "imageUrl": "https://images.jwennmet.ht/portfolio/cleaner_1.jpg",
+        "caption": "Travay fini",
+        "categoryId": "cleaner",
+        "uploadedAt": "2026-06-16T09:30:00Z"
+      },
+      {
+        "id": "worker_7_p2",
+        "imageUrl": "https://images.jwennmet.ht/portfolio/cleaner_2.jpg",
+        "caption": "Chantye an kou",
+        "categoryId": "cleaner",
+        "uploadedAt": "2026-07-24T09:30:00Z"
+      },
+      {
+        "id": "worker_7_p3",
+        "imageUrl": "https://images.jwennmet.ht/portfolio/cleaner_3.jpg",
+        "caption": "Detay fini an",
+        "categoryId": "cleaner",
+        "uploadedAt": "2026-08-11T09:30:00Z"
+      }
+    ],
+    "certificates": [],
+    "latitude": 18.25508,
+    "longitude": -72.5012,
+    "acceptedPaymentMethods": [
+      "moncash",
+      "natcash",
+      "cash"
+    ],
+    "suspended": false,
+    "createdAt": "2025-11-10T09:30:00Z"
+  },
+  {
+    "id": "worker_8",
+    "fullName": "Emmanuel Dorvil",
+    "categoryIds": [
+      "tailor"
+    ],
+    "departmentId": "grand_anse",
+    "city": "Jérémie",
+    "headline": "Uniforms, dresses and alterations",
+    "bio": "Emmanuel Dorvil — uniforms, dresses and alterations. 17 ane eksperyans nan Jérémie ak zòn nan. Travay garanti, devi gratis anvan chak travay.",
+    "photoUrl": "https://api.dicebear.com/7.x/avataaars/png?seed=worker_8&backgroundColor=0A6CFF",
+    "phone": "+50938383927",
+    "hourlyRate": 1400.0,
+    "currency": "HTG",
+    "rating": 3.9,
+    "reviewCount": 50,
+    "jobsCompleted": 51,
+    "yearsExperience": 15,
+    "verification": "approved",
+    "availableNow": false,
+    "serviceDepartmentIds": [
+      "grand_anse",
+      "nippes"
+    ],
+    "serviceCities": [
+      "Jérémie",
+      "Corail"
+    ],
+    "portfolio": [
+      {
+        "id": "worker_8_p1",
+        "imageUrl": "https://images.jwennmet.ht/portfolio/tailor_1.jpg",
+        "caption": "Travay fini",
+        "categoryId": "tailor",
+        "uploadedAt": "2026-03-09T09:30:00Z"
+      }
+    ],
+    "certificates": [
+      {
+        "id": "worker_8_c1",
+        "title": "INFP — Sètifika pwofesyonèl",
+        "fileUrl": "https://files.jwennmet.ht/certificates/worker_8.pdf",
+        "issuer": "Institut National de Formation Professionnelle",
+        "issuedAt": "2025-02-12T09:30:00Z"
+      }
+    ],
+    "latitude": 18.58029,
+    "longitude": -74.08314,
+    "acceptedPaymentMethods": [
+      "moncash",
+      "cash"
+    ],
+    "suspended": false,
+    "createdAt": "2026-04-22T09:30:00Z"
+  },
+  {
+    "id": "worker_9",
+    "fullName": "Guerline Célestin",
+    "categoryIds": [
+      "ac_technician",
+      "tailor"
+    ],
+    "departmentId": "nippes",
+    "city": "Anse-à-Veau",
+    "headline": "Klimatizasyon ak fredi",
+    "bio": "Guerline Célestin — split units, servicing and gas refill. 13 ane eksperyans nan Anse-à-Veau ak zòn nan. Travay garanti, devi gratis anvan chak travay.",
+    "photoUrl": "https://api.dicebear.com/7.x/avataaars/png?seed=worker_9&backgroundColor=0A6CFF",
+    "phone": "+50930619429",
+    "hourlyRate": 350.0,
+    "currency": "HTG",
+    "rating": 4.0,
+    "reviewCount": 56,
+    "jobsCompleted": 63,
+    "yearsExperience": 21,
+    "verification": "pending",
+    "availableNow": true,
+    "serviceDepartmentIds": [
+      "nippes",
+      "ouest"
+    ],
+    "serviceCities": [
+      "Miragoâne",
+      "Anse-à-Veau"
+    ],
+    "portfolio": [
+      {
+        "id": "worker_9_p1",
+        "imageUrl": "https://images.jwennmet.ht/portfolio/ac_technician_1.jpg",
+        "caption": "Travay fini",
+        "categoryId": "ac_technician",
+        "uploadedAt": "2026-04-06T09:30:00Z"
+      },
+      {
+        "id": "worker_9_p2",
+        "imageUrl": "https://images.jwennmet.ht/portfolio/ac_technician_2.jpg",
+        "caption": "Chantye an kou",
+        "categoryId": "ac_technician",
+        "uploadedAt": "2026-06-22T09:30:00Z"
+      }
+    ],
+    "certificates": [],
+    "latitude": 18.3995,
+    "longitude": -73.11563,
+    "acceptedPaymentMethods": [
+      "moncash",
+      "natcash",
+      "cash"
+    ],
+    "suspended": false,
+    "createdAt": "2025-02-01T09:30:00Z"
+  },
+  {
+    "id": "worker_10",
+    "fullName": "Ricardo Sainvil",
+    "categoryIds": [
+      "electrician"
+    ],
+    "departmentId": "ouest",
+    "city": "Croix-des-Bouquets",
+    "headline": "Installations et pannes électriques",
+    "bio": "Ricardo Sainvil — wiring, breakers and inverter setups. 15 ane eksperyans nan Croix-des-Bouquets ak zòn nan. Travay garanti, devi gratis anvan chak travay.",
+    "photoUrl": "https://api.dicebear.com/7.x/avataaars/png?seed=worker_10&backgroundColor=0A6CFF",
+    "phone": "+50939257947",
+    "hourlyRate": 1800.0,
+    "currency": "HTG",
+    "rating": 4.7,
+    "reviewCount": 52,
+    "jobsCompleted": 80,
+    "yearsExperience": 5,
+    "verification": "approved",
+    "availableNow": true,
+    "serviceDepartmentIds": [
+      "nord",
+      "ouest"
+    ],
+    "serviceCities": [
+      "Port-au-Prince",
+      "Delmas",
+      "Pétion-Ville"
+    ],
+    "portfolio": [
+      {
+        "id": "worker_10_p1",
+        "imageUrl": "https://images.jwennmet.ht/portfolio/electrician_1.jpg",
+        "caption": "Travay fini",
+        "categoryId": "electrician",
+        "uploadedAt": "2026-06-20T09:30:00Z"
+      }
+    ],
+    "certificates": [
+      {
+        "id": "worker_10_c1",
+        "title": "INFP — Sètifika pwofesyonèl",
+        "fileUrl": "https://files.jwennmet.ht/certificates/worker_10.pdf",
+        "issuer": "Institut National de Formation Professionnelle",
+        "issuedAt": "2022-02-15T09:30:00Z"
+      }
+    ],
+    "latitude": 18.61152,
+    "longitude": -72.307,
+    "acceptedPaymentMethods": [
+      "moncash",
+      "natcash",
+      "cash"
+    ],
+    "suspended": false,
+    "createdAt": "2024-10-15T09:30:00Z"
+  },
+  {
+    "id": "worker_11",
+    "fullName": "Sophonie Louis",
+    "categoryIds": [
+      "plumber"
+    ],
+    "departmentId": "nord",
+    "city": "Milot",
+    "headline": "Leaks, tanks and bathroom fittings",
+    "bio": "Sophonie Louis — leaks, tanks and bathroom fittings. 22 ane eksperyans nan Milot ak zòn nan. Travay garanti, devi gratis anvan chak travay.",
+    "photoUrl": "https://api.dicebear.com/7.x/avataaars/png?seed=worker_11&backgroundColor=0A6CFF",
+    "phone": "+50938661251",
+    "hourlyRate": 350.0,
+    "currency": "HTG",
+    "rating": 4.1,
+    "reviewCount": 10,
+    "jobsCompleted": 36,
+    "yearsExperience": 15,
+    "verification": "approved",
+    "availableNow": false,
+    "serviceDepartmentIds": [
+      "nord",
+      "nord_est"
+    ],
+    "serviceCities": [
+      "Cap-Haïtien",
+      "Limbé",
+      "Milot"
+    ],
+    "portfolio": [
+      {
+        "id": "worker_11_p1",
+        "imageUrl": "https://images.jwennmet.ht/portfolio/plumber_1.jpg",
+        "caption": "Travay fini",
+        "categoryId": "plumber",
+        "uploadedAt": "2026-03-02T09:30:00Z"
+      },
+      {
+        "id": "worker_11_p2",
+        "imageUrl": "https://images.jwennmet.ht/portfolio/plumber_2.jpg",
+        "caption": "Chantye an kou",
+        "categoryId": "plumber",
+        "uploadedAt": "2026-08-05T09:30:00Z"
+      },
+      {
+        "id": "worker_11_p3",
+        "imageUrl": "https://images.jwennmet.ht/portfolio/plumber_3.jpg",
+        "caption": "Detay fini an",
+        "categoryId": "plumber",
+        "uploadedAt": "2026-08-03T09:30:00Z"
+      }
+    ],
+    "certificates": [],
+    "latitude": 19.71085,
+    "longitude": -72.26245,
+    "acceptedPaymentMethods": [
+      "moncash",
+      "natcash",
+      "cash"
+    ],
+    "suspended": false,
+    "createdAt": "2024-10-20T09:30:00Z"
+  },
+  {
+    "id": "worker_12",
+    "fullName": "Patrick Fleurival",
+    "categoryIds": [
+      "carpenter",
+      "cleaner"
+    ],
+    "departmentId": "nord_est",
+    "city": "Fort-Liberté",
+    "headline": "Ebenis sou mezi",
+    "bio": "Patrick Fleurival — doors, cabinets and roof framing. 8 ane eksperyans nan Fort-Liberté ak zòn nan. Travay garanti, devi gratis anvan chak travay.",
+    "photoUrl": "https://api.dicebear.com/7.x/avataaars/png?seed=worker_12&backgroundColor=0A6CFF",
+    "phone": "+50948407428",
+    "hourlyRate": 900.0,
+    "currency": "HTG",
+    "rating": 4.9,
+    "reviewCount": 41,
+    "jobsCompleted": 45,
+    "yearsExperience": 7,
+    "verification": "approved",
+    "availableNow": true,
+    "serviceDepartmentIds": [
+      "nord_est",
+      "nord_ouest"
+    ],
+    "serviceCities": [
+      "Fort-Liberté",
+      "Ouanaminthe"
+    ],
+    "portfolio": [
+      {
+        "id": "worker_12_p1",
+        "imageUrl": "https://images.jwennmet.ht/portfolio/carpenter_1.jpg",
+        "caption": "Travay fini",
+        "categoryId": "carpenter",
+        "uploadedAt": "2026-08-26T09:30:00Z"
+      },
+      {
+        "id": "worker_12_p2",
+        "imageUrl": "https://images.jwennmet.ht/portfolio/carpenter_2.jpg",
+        "caption": "Chantye an kou",
+        "categoryId": "carpenter",
+        "uploadedAt": "2026-09-04T09:30:00Z"
+      },
+      {
+        "id": "worker_12_p3",
+        "imageUrl": "https://images.jwennmet.ht/portfolio/carpenter_3.jpg",
+        "caption": "Detay fini an",
+        "categoryId": "carpenter",
+        "uploadedAt": "2026-06-16T09:30:00Z"
+      }
+    ],
+    "certificates": [
+      {
+        "id": "worker_12_c1",
+        "title": "INFP — Sètifika pwofesyonèl",
+        "fileUrl": "https://files.jwennmet.ht/certificates/worker_12.pdf",
+        "issuer": "Institut National de Formation Professionnelle",
+        "issuedAt": "2021-05-31T09:30:00Z"
+      }
+    ],
+    "latitude": 19.60603,
+    "longitude": -71.88727,
+    "acceptedPaymentMethods": [
+      "moncash",
+      "cash"
+    ],
+    "suspended": false,
+    "createdAt": "2026-05-14T09:30:00Z"
+  },
+  {
+    "id": "worker_13",
+    "fullName": "Darline Delva",
+    "categoryIds": [
+      "mason"
+    ],
+    "departmentId": "nord_ouest",
+    "city": "Jean-Rabel",
+    "headline": "Maçonnerie et béton",
+    "bio": "Darline Delva — blockwork, plaster and concrete slabs. 4 ane eksperyans nan Jean-Rabel ak zòn nan. Travay garanti, devi gratis anvan chak travay.",
+    "photoUrl": "https://api.dicebear.com/7.x/avataaars/png?seed=worker_13&backgroundColor=0A6CFF",
+    "phone": "+50948402033",
+    "hourlyRate": 350.0,
+    "currency": "HTG",
+    "rating": 4.9,
+    "reviewCount": 80,
+    "jobsCompleted": 95,
+    "yearsExperience": 13,
+    "verification": "approved",
+    "availableNow": true,
+    "serviceDepartmentIds": [
+      "artibonite",
+      "nord_ouest"
+    ],
+    "serviceCities": [
+      "Port-de-Paix",
+      "Jean-Rabel"
+    ],
+    "portfolio": [
+      {
+        "id": "worker_13_p1",
+        "imageUrl": "https://images.jwennmet.ht/portfolio/mason_1.jpg",
+        "caption": "Travay fini",
+        "categoryId": "mason",
+        "uploadedAt": "2026-05-18T09:30:00Z"
+      },
+      {
+        "id": "worker_13_p2",
+        "imageUrl": "https://images.jwennmet.ht/portfolio/mason_2.jpg",
+        "caption": "Chantye an kou",
+        "categoryId": "mason",
+        "uploadedAt": "2026-07-23T09:30:00Z"
+      },
+      {
+        "id": "worker_13_p3",
+        "imageUrl": "https://images.jwennmet.ht/portfolio/mason_3.jpg",
+        "caption": "Detay fini an",
+        "categoryId": "mason",
+        "uploadedAt": "2026-04-22T09:30:00Z"
+      }
+    ],
+    "certificates": [],
+    "latitude": 19.99787,
+    "longitude": -72.79161,
+    "acceptedPaymentMethods": [
+      "moncash",
+      "natcash",
+      "cash"
+    ],
+    "suspended": false,
+    "createdAt": "2025-12-09T09:30:00Z"
+  },
+  {
+    "id": "worker_14",
+    "fullName": "Yvon Charles",
+    "categoryIds": [
+      "mechanic"
+    ],
+    "departmentId": "artibonite",
+    "city": "Dessalines",
+    "headline": "Engine, brakes and roadside repair",
+    "bio": "Yvon Charles — engine, brakes and roadside repair. 13 ane eksperyans nan Dessalines ak zòn nan. Travay garanti, devi gratis anvan chak travay.",
+    "photoUrl": "https://api.dicebear.com/7.x/avataaars/png?seed=worker_14&backgroundColor=0A6CFF",
+    "phone": "+50931196323",
+    "hourlyRate": 350.0,
+    "currency": "HTG",
+    "rating": 4.4,
+    "reviewCount": 34,
+    "jobsCompleted": 67,
+    "yearsExperience": 5,
+    "verification": "unverified",
+    "availableNow": false,
+    "serviceDepartmentIds": [
+      "artibonite",
+      "centre"
+    ],
+    "serviceCities": [
+      "Gonaïves",
+      "Saint-Marc",
+      "Dessalines"
+    ],
+    "portfolio": [
+      {
+        "id": "worker_14_p1",
+        "imageUrl": "https://images.jwennmet.ht/portfolio/mechanic_1.jpg",
+        "caption": "Travay fini",
+        "categoryId": "mechanic",
+        "uploadedAt": "2026-04-21T09:30:00Z"
+      },
+      {
+        "id": "worker_14_p2",
+        "imageUrl": "https://images.jwennmet.ht/portfolio/mechanic_2.jpg",
+        "caption": "Chantye an kou",
+        "categoryId": "mechanic",
+        "uploadedAt": "2026-05-27T09:30:00Z"
+      }
+    ],
+    "certificates": [],
+    "latitude": 19.43545,
+    "longitude": -72.71402,
+    "acceptedPaymentMethods": [
+      "moncash",
+      "natcash",
+      "cash"
+    ],
+    "suspended": false,
+    "createdAt": "2025-05-09T09:30:00Z"
+  },
+  {
+    "id": "worker_15",
+    "fullName": "Mirlande Cadet",
+    "categoryIds": [
+      "painter",
+      "welder"
+    ],
+    "departmentId": "centre",
+    "city": "Mirebalais",
+    "headline": "Penti anndan ak deyò",
+    "bio": "Mirlande Cadet — interior, exterior and waterproofing. 18 ane eksperyans nan Mirebalais ak zòn nan. Travay garanti, devi gratis anvan chak travay.",
+    "photoUrl": "https://api.dicebear.com/7.x/avataaars/png?seed=worker_15&backgroundColor=0A6CFF",
+    "phone": "+50939249202",
+    "hourlyRate": 1400.0,
+    "currency": "HTG",
+    "rating": 4.6,
+    "reviewCount": 37,
+    "jobsCompleted": 62,
+    "yearsExperience": 17,
+    "verification": "approved",
+    "availableNow": true,
+    "serviceDepartmentIds": [
+      "centre",
+      "sud"
+    ],
+    "serviceCities": [
+      "Hinche",
+      "Mirebalais"
+    ],
+    "portfolio": [
+      {
+        "id": "worker_15_p1",
+        "imageUrl": "https://images.jwennmet.ht/portfolio/painter_1.jpg",
+        "caption": "Travay fini",
+        "categoryId": "painter",
+        "uploadedAt": "2026-03-23T09:30:00Z"
+      },
+      {
+        "id": "worker_15_p2",
+        "imageUrl": "https://images.jwennmet.ht/portfolio/painter_2.jpg",
+        "caption": "Chantye an kou",
+        "categoryId": "painter",
+        "uploadedAt": "2026-03-06T09:30:00Z"
+      },
+      {
+        "id": "worker_15_p3",
+        "imageUrl": "https://images.jwennmet.ht/portfolio/painter_3.jpg",
+        "caption": "Detay fini an",
+        "categoryId": "painter",
+        "uploadedAt": "2026-03-03T09:30:00Z"
+      }
+    ],
+    "certificates": [],
+    "latitude": 19.14585,
+    "longitude": -71.98512,
+    "acceptedPaymentMethods": [
+      "moncash",
+      "natcash",
+      "cash"
+    ],
+    "suspended": false,
+    "createdAt": "2026-01-11T09:30:00Z"
+  },
+  {
+    "id": "worker_16",
+    "fullName": "Kesner Lafontant",
+    "categoryIds": [
+      "welder"
+    ],
+    "departmentId": "sud",
+    "city": "Aquin",
+    "headline": "Soudure et ferronnerie",
+    "bio": "Kesner Lafontant — gates, grilles and structural welding. 21 ane eksperyans nan Aquin ak zòn nan. Travay garanti, devi gratis anvan chak travay.",
+    "photoUrl": "https://api.dicebear.com/7.x/avataaars/png?seed=worker_16&backgroundColor=0A6CFF",
+    "phone": "+50940889417",
+    "hourlyRate": 350.0,
+    "currency": "HTG",
+    "rating": 4.4,
+    "reviewCount": 12,
+    "jobsCompleted": 20,
+    "yearsExperience": 5,
+    "verification": "approved",
+    "availableNow": true,
+    "serviceDepartmentIds": [
+      "sud",
+      "sud_est"
+    ],
+    "serviceCities": [
+      "Les Cayes",
+      "Aquin",
+      "Port-Salut"
+    ],
+    "portfolio": [
+      {
+        "id": "worker_16_p1",
+        "imageUrl": "https://images.jwennmet.ht/portfolio/welder_1.jpg",
+        "caption": "Travay fini",
+        "categoryId": "welder",
+        "uploadedAt": "2026-08-07T09:30:00Z"
+      },
+      {
+        "id": "worker_16_p2",
+        "imageUrl": "https://images.jwennmet.ht/portfolio/welder_2.jpg",
+        "caption": "Chantye an kou",
+        "categoryId": "welder",
+        "uploadedAt": "2026-06-19T09:30:00Z"
+      }
+    ],
+    "certificates": [
+      {
+        "id": "worker_16_c1",
+        "title": "INFP — Sètifika pwofesyonèl",
+        "fileUrl": "https://files.jwennmet.ht/certificates/worker_16.pdf",
+        "issuer": "Institut National de Formation Professionnelle",
+        "issuedAt": "2021-05-14T09:30:00Z"
+      }
+    ],
+    "latitude": 18.1769,
+    "longitude": -73.67593,
+    "acceptedPaymentMethods": [
+      "moncash",
+      "cash"
+    ],
+    "suspended": false,
+    "createdAt": "2024-11-10T09:30:00Z"
+  },
+  {
+    "id": "worker_17",
+    "fullName": "Fabiola Pierre-Louis",
+    "categoryIds": [
+      "cleaner"
+    ],
+    "departmentId": "sud_est",
+    "city": "Marigot",
+    "headline": "Homes, offices and post-construction",
+    "bio": "Fabiola Pierre-Louis — homes, offices and post-construction. 11 ane eksperyans nan Marigot ak zòn nan. Travay garanti, devi gratis anvan chak travay.",
+    "photoUrl": "https://api.dicebear.com/7.x/avataaars/png?seed=worker_17&backgroundColor=0A6CFF",
+    "phone": "+50949894066",
+    "hourlyRate": 350.0,
+    "currency": "HTG",
+    "rating": 4.1,
+    "reviewCount": 41,
+    "jobsCompleted": 58,
+    "yearsExperience": 2,
+    "verification": "approved",
+    "availableNow": false,
+    "serviceDepartmentIds": [
+      "grand_anse",
+      "sud_est"
+    ],
+    "serviceCities": [
+      "Jacmel",
+      "Marigot"
+    ],
+    "portfolio": [
+      {
+        "id": "worker_17_p1",
+        "imageUrl": "https://images.jwennmet.ht/portfolio/cleaner_1.jpg",
+        "caption": "Travay fini",
+        "categoryId": "cleaner",
+        "uploadedAt": "2026-06-04T09:30:00Z"
+      }
+    ],
+    "certificates": [],
+    "latitude": 18.15616,
+    "longitude": -72.47368,
+    "acceptedPaymentMethods": [
+      "moncash",
+      "natcash",
+      "cash"
+    ],
+    "suspended": false,
+    "createdAt": "2026-08-04T09:30:00Z"
+  },
+  {
+    "id": "worker_18",
+    "fullName": "Josué Étienne",
+    "categoryIds": [
+      "tailor",
+      "painter"
+    ],
+    "departmentId": "grand_anse",
+    "city": "Jérémie",
+    "headline": "Kouti ak retouch",
+    "bio": "Josué Étienne — uniforms, dresses and alterations. 14 ane eksperyans nan Jérémie ak zòn nan. Travay garanti, devi gratis anvan chak travay.",
+    "photoUrl": "https://api.dicebear.com/7.x/avataaars/png?seed=worker_18&backgroundColor=0A6CFF",
+    "phone": "+50945370282",
+    "hourlyRate": 650.0,
+    "currency": "HTG",
+    "rating": 3.6,
+    "reviewCount": 23,
+    "jobsCompleted": 34,
+    "yearsExperience": 16,
+    "verification": "approved",
+    "availableNow": true,
+    "serviceDepartmentIds": [
+      "grand_anse",
+      "nippes"
+    ],
+    "serviceCities": [
+      "Jérémie",
+      "Corail"
+    ],
+    "portfolio": [
+      {
+        "id": "worker_18_p1",
+        "imageUrl": "https://images.jwennmet.ht/portfolio/tailor_1.jpg",
+        "caption": "Travay fini",
+        "categoryId": "tailor",
+        "uploadedAt": "2026-06-02T09:30:00Z"
+      },
+      {
+        "id": "worker_18_p2",
+        "imageUrl": "https://images.jwennmet.ht/portfolio/tailor_2.jpg",
+        "caption": "Chantye an kou",
+        "categoryId": "tailor",
+        "uploadedAt": "2026-05-24T09:30:00Z"
+      }
+    ],
+    "certificates": [
+      {
+        "id": "worker_18_c1",
+        "title": "INFP — Sètifika pwofesyonèl",
+        "fileUrl": "https://files.jwennmet.ht/certificates/worker_18.pdf",
+        "issuer": "Institut National de Formation Professionnelle",
+        "issuedAt": "2022-08-18T09:30:00Z"
+      }
+    ],
+    "latitude": 18.66271,
+    "longitude": -74.04874,
+    "acceptedPaymentMethods": [
+      "moncash",
+      "natcash",
+      "cash"
+    ],
+    "suspended": false,
+    "createdAt": "2025-01-16T09:30:00Z"
+  },
+  {
+    "id": "worker_19",
+    "fullName": "Chantal Moïse",
+    "categoryIds": [
+      "ac_technician"
+    ],
+    "departmentId": "nippes",
+    "city": "Anse-à-Veau",
+    "headline": "Climatisation et froid",
+    "bio": "Chantal Moïse — split units, servicing and gas refill. 13 ane eksperyans nan Anse-à-Veau ak zòn nan. Travay garanti, devi gratis anvan chak travay.",
+    "photoUrl": "https://api.dicebear.com/7.x/avataaars/png?seed=worker_19&backgroundColor=0A6CFF",
+    "phone": "+50942100761",
+    "hourlyRate": 900.0,
+    "currency": "HTG",
+    "rating": 3.9,
+    "reviewCount": 82,
+    "jobsCompleted": 89,
+    "yearsExperience": 6,
+    "verification": "pending",
+    "availableNow": true,
+    "serviceDepartmentIds": [
+      "nippes",
+      "ouest"
+    ],
+    "serviceCities": [
+      "Miragoâne",
+      "Anse-à-Veau"
+    ],
+    "portfolio": [
+      {
+        "id": "worker_19_p1",
+        "imageUrl": "https://images.jwennmet.ht/portfolio/ac_technician_1.jpg",
+        "caption": "Travay fini",
+        "categoryId": "ac_technician",
+        "uploadedAt": "2026-04-11T09:30:00Z"
+      },
+      {
+        "id": "worker_19_p2",
+        "imageUrl": "https://images.jwennmet.ht/portfolio/ac_technician_2.jpg",
+        "caption": "Chantye an kou",
+        "categoryId": "ac_technician",
+        "uploadedAt": "2026-08-19T09:30:00Z"
+      },
+      {
+        "id": "worker_19_p3",
+        "imageUrl": "https://images.jwennmet.ht/portfolio/ac_technician_3.jpg",
+        "caption": "Detay fini an",
+        "categoryId": "ac_technician",
+        "uploadedAt": "2026-06-21T09:30:00Z"
+      }
+    ],
+    "certificates": [],
+    "latitude": 18.52107,
+    "longitude": -73.012,
+    "acceptedPaymentMethods": [
+      "moncash",
+      "natcash",
+      "cash"
+    ],
+    "suspended": false,
+    "createdAt": "2026-08-14T09:30:00Z"
+  },
+  {
+    "id": "worker_20",
+    "fullName": "Ronald Augustin",
+    "categoryIds": [
+      "electrician"
+    ],
+    "departmentId": "ouest",
+    "city": "Pétion-Ville",
+    "headline": "Wiring, breakers and inverter setups",
+    "bio": "Ronald Augustin — wiring, breakers and inverter setups. 17 ane eksperyans nan Pétion-Ville ak zòn nan. Travay garanti, devi gratis anvan chak travay.",
+    "photoUrl": "https://api.dicebear.com/7.x/avataaars/png?seed=worker_20&backgroundColor=0A6CFF",
+    "phone": "+50946361700",
+    "hourlyRate": 900.0,
+    "currency": "HTG",
+    "rating": 4.9,
+    "reviewCount": 22,
+    "jobsCompleted": 43,
+    "yearsExperience": 3,
+    "verification": "approved",
+    "availableNow": false,
+    "serviceDepartmentIds": [
+      "nord",
+      "ouest"
+    ],
+    "serviceCities": [
+      "Port-au-Prince",
+      "Delmas",
+      "Pétion-Ville"
+    ],
+    "portfolio": [
+      {
+        "id": "worker_20_p1",
+        "imageUrl": "https://images.jwennmet.ht/portfolio/electrician_1.jpg",
+        "caption": "Travay fini",
+        "categoryId": "electrician",
+        "uploadedAt": "2026-06-24T09:30:00Z"
+      },
+      {
+        "id": "worker_20_p2",
+        "imageUrl": "https://images.jwennmet.ht/portfolio/electrician_2.jpg",
+        "caption": "Chantye an kou",
+        "categoryId": "electrician",
+        "uploadedAt": "2026-08-24T09:30:00Z"
+      },
+      {
+        "id": "worker_20_p3",
+        "imageUrl": "https://images.jwennmet.ht/portfolio/electrician_3.jpg",
+        "caption": "Detay fini an",
+        "categoryId": "electrician",
+        "uploadedAt": "2026-06-16T09:30:00Z"
+      }
+    ],
+    "certificates": [
+      {
+        "id": "worker_20_c1",
+        "title": "INFP — Sètifika pwofesyonèl",
+        "fileUrl": "https://files.jwennmet.ht/certificates/worker_20.pdf",
+        "issuer": "Institut National de Formation Professionnelle",
+        "issuedAt": "2025-06-16T09:30:00Z"
+      }
+    ],
+    "latitude": 18.52453,
+    "longitude": -72.29239,
+    "acceptedPaymentMethods": [
+      "moncash",
+      "cash"
+    ],
+    "suspended": false,
+    "createdAt": "2025-05-19T09:30:00Z"
+  },
+  {
+    "id": "worker_21",
+    "fullName": "Esther Désir",
+    "categoryIds": [
+      "plumber",
+      "mechanic"
+    ],
+    "departmentId": "nord",
+    "city": "Cap-Haïtien",
+    "headline": "Plonbri ak rezèvwa",
+    "bio": "Esther Désir — leaks, tanks and bathroom fittings. 7 ane eksperyans nan Cap-Haïtien ak zòn nan. Travay garanti, devi gratis anvan chak travay.",
+    "photoUrl": "https://api.dicebear.com/7.x/avataaars/png?seed=worker_21&backgroundColor=0A6CFF",
+    "phone": "+50943170570",
+    "hourlyRate": 1100.0,
+    "currency": "HTG",
+    "rating": 4.9,
+    "reviewCount": 24,
+    "jobsCompleted": 25,
+    "yearsExperience": 4,
+    "verification": "approved",
+    "availableNow": true,
+    "serviceDepartmentIds": [
+      "nord",
+      "nord_est"
+    ],
+    "serviceCities": [
+      "Cap-Haïtien",
+      "Limbé",
+      "Milot"
+    ],
+    "portfolio": [
+      {
+        "id": "worker_21_p1",
+        "imageUrl": "https://images.jwennmet.ht/portfolio/plumber_1.jpg",
+        "caption": "Travay fini",
+        "categoryId": "plumber",
+        "uploadedAt": "2026-06-13T09:30:00Z"
+      },
+      {
+        "id": "worker_21_p2",
+        "imageUrl": "https://images.jwennmet.ht/portfolio/plumber_2.jpg",
+        "caption": "Chantye an kou",
+        "categoryId": "plumber",
+        "uploadedAt": "2026-05-07T09:30:00Z"
+      },
+      {
+        "id": "worker_21_p3",
+        "imageUrl": "https://images.jwennmet.ht/portfolio/plumber_3.jpg",
+        "caption": "Detay fini an",
+        "categoryId": "plumber",
+        "uploadedAt": "2026-08-22T09:30:00Z"
+      }
+    ],
+    "certificates": [],
+    "latitude": 19.82903,
+    "longitude": -72.13112,
+    "acceptedPaymentMethods": [
+      "moncash",
+      "natcash",
+      "cash"
+    ],
+    "suspended": false,
+    "createdAt": "2025-08-03T09:30:00Z"
+  },
+  {
+    "id": "worker_22",
+    "fullName": "Dieuseul Beauvoir",
+    "categoryIds": [
+      "carpenter"
+    ],
+    "departmentId": "nord_est",
+    "city": "Fort-Liberté",
+    "headline": "Menuiserie sur mesure",
+    "bio": "Dieuseul Beauvoir — doors, cabinets and roof framing. 8 ane eksperyans nan Fort-Liberté ak zòn nan. Travay garanti, devi gratis anvan chak travay.",
+    "photoUrl": "https://api.dicebear.com/7.x/avataaars/png?seed=worker_22&backgroundColor=0A6CFF",
+    "phone": "+50938221748",
+    "hourlyRate": 1800.0,
+    "currency": "HTG",
+    "rating": 4.0,
+    "reviewCount": 68,
+    "jobsCompleted": 89,
+    "yearsExperience": 7,
+    "verification": "approved",
+    "availableNow": true,
+    "serviceDepartmentIds": [
+      "nord_est",
+      "nord_ouest"
+    ],
+    "serviceCities": [
+      "Fort-Liberté",
+      "Ouanaminthe"
+    ],
+    "portfolio": [
+      {
+        "id": "worker_22_p1",
+        "imageUrl": "https://images.jwennmet.ht/portfolio/carpenter_1.jpg",
+        "caption": "Travay fini",
+        "categoryId": "carpenter",
+        "uploadedAt": "2026-06-24T09:30:00Z"
+      },
+      {
+        "id": "worker_22_p2",
+        "imageUrl": "https://images.jwennmet.ht/portfolio/carpenter_2.jpg",
+        "caption": "Chantye an kou",
+        "categoryId": "carpenter",
+        "uploadedAt": "2026-04-23T09:30:00Z"
+      },
+      {
+        "id": "worker_22_p3",
+        "imageUrl": "https://images.jwennmet.ht/portfolio/carpenter_3.jpg",
+        "caption": "Detay fini an",
+        "categoryId": "carpenter",
+        "uploadedAt": "2026-07-02T09:30:00Z"
+      }
+    ],
+    "certificates": [
+      {
+        "id": "worker_22_c1",
+        "title": "INFP — Sètifika pwofesyonèl",
+        "fileUrl": "https://files.jwennmet.ht/certificates/worker_22.pdf",
+        "issuer": "Institut National de Formation Professionnelle",
+        "issuedAt": "2024-02-28T09:30:00Z"
+      }
+    ],
+    "latitude": 19.68696,
+    "longitude": -71.91669,
+    "acceptedPaymentMethods": [
+      "moncash",
+      "natcash",
+      "cash"
+    ],
+    "suspended": false,
+    "createdAt": "2024-12-30T09:30:00Z"
+  },
+  {
+    "id": "worker_23",
+    "fullName": "Naïka Exantus",
+    "categoryIds": [
+      "mason"
+    ],
+    "departmentId": "nord_ouest",
+    "city": "Jean-Rabel",
+    "headline": "Blockwork, plaster and concrete slabs",
+    "bio": "Naïka Exantus — blockwork, plaster and concrete slabs. 14 ane eksperyans nan Jean-Rabel ak zòn nan. Travay garanti, devi gratis anvan chak travay.",
+    "photoUrl": "https://api.dicebear.com/7.x/avataaars/png?seed=worker_23&backgroundColor=0A6CFF",
+    "phone": "+50936755251",
+    "hourlyRate": 650.0,
+    "currency": "HTG",
+    "rating": 3.9,
+    "reviewCount": 23,
+    "jobsCompleted": 35,
+    "yearsExperience": 5,
+    "verification": "approved",
+    "availableNow": false,
+    "serviceDepartmentIds": [
+      "artibonite",
+      "nord_ouest"
+    ],
+    "serviceCities": [
+      "Port-de-Paix",
+      "Jean-Rabel"
+    ],
+    "portfolio": [
+      {
+        "id": "worker_23_p1",
+        "imageUrl": "https://images.jwennmet.ht/portfolio/mason_1.jpg",
+        "caption": "Travay fini",
+        "categoryId": "mason",
+        "uploadedAt": "2026-04-27T09:30:00Z"
+      }
+    ],
+    "certificates": [],
+    "latitude": 19.87407,
+    "longitude": -72.84595,
+    "acceptedPaymentMethods": [
+      "moncash",
+      "natcash",
+      "cash"
+    ],
+    "suspended": false,
+    "createdAt": "2026-08-08T09:30:00Z"
+  }
+]
