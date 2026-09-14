@@ -31,6 +31,7 @@ flutter run          # starts in demo mode: no Firebase project needed
 | Sample dataset | `assets/sample_data/` |
 | Security rules, indexes, Cloud Functions | `firebase/`, `functions/` |
 | MVP scope, success metrics, launch plan | [`docs/MVP.md`](docs/MVP.md) |
+| Paste-ready prompt for an AI app builder | [`docs/BUILD_PROMPT.md`](docs/BUILD_PROMPT.md) |
 | Schema, deployment, platform setup | `docs/` |
 
 ## Architecture
