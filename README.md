@@ -28,6 +28,7 @@ flutter run          # starts in demo mode: no Firebase project needed
 | Translations (EN / FR / HT) | `assets/i18n/` |
 | Sample dataset | `assets/sample_data/` |
 | Security rules, indexes, Cloud Functions | `firebase/`, `functions/` |
+| MVP scope, success metrics, launch plan | [`docs/MVP.md`](docs/MVP.md) |
 | Schema, deployment, platform setup | `docs/` |
 
 ## Architecture
