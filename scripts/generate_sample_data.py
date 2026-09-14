@@ -41,7 +41,17 @@ DEPARTMENTS = {
 CATEGORIES = [
     "electrician", "plumber", "carpenter", "mason", "mechanic",
     "painter", "welder", "cleaner", "tailor", "ac_technician",
+    "hair_stylist", "barber", "makeup_artist", "nail_technician",
+    "massage_therapist",
 ]
+
+# Trades nobody has listed yet, typed by the workers themselves. Demo mode
+# needs at least one so the "Other" bucket is not an empty promise.
+CUSTOM_TRADES = {
+    7: ["Fotograf evènman"],
+    13: ["Repetitè lekòl"],
+    19: ["DJ ak sonorizasyon", "Dekoratè fèt"],
+}
 
 HEADLINES = {
     "electrician": ("Installations et pannes électriques", "Enstalasyon ak pàn elektrik", "Wiring, breakers and inverter setups"),
@@ -54,6 +64,11 @@ HEADLINES = {
     "cleaner": ("Nettoyage maison et bureau", "Netwayaj kay ak biwo", "Homes, offices and post-construction"),
     "tailor": ("Couture et retouches", "Kouti ak retouch", "Uniforms, dresses and alterations"),
     "ac_technician": ("Climatisation et froid", "Klimatizasyon ak fredi", "Split units, servicing and gas refill"),
+    "hair_stylist": ("Coiffure femmes et hommes", "Kwafi fanm ak gason", "Cuts, braids, locs and treatments"),
+    "barber": ("Barbier et taille de barbe", "Barbye ak taye bab", "Fades, line-ups and beard trims"),
+    "makeup_artist": ("Maquillage mariage et événements", "Makiyaj maryaj ak evènman", "Bridal, events and photoshoot makeup"),
+    "nail_technician": ("Manucure et pédicure", "Maniki ak pedikir", "Gel, acrylics and nail care"),
+    "massage_therapist": ("Massage et bien-être", "Masaj ak byennèt", "Deep tissue, relaxation and sports massage"),
 }
 
 FIRST = ["Jean", "Marie", "Wilner", "Roseline", "Jacques", "Nadège", "Frantz", "Micheline",
@@ -125,6 +140,9 @@ def build() -> None:
         primary = CATEGORIES[i % len(CATEGORIES)]
         extra = CATEGORIES[(i * 3 + 1) % len(CATEGORIES)]
         cats = [primary] if i % 3 else [primary, extra]
+        custom = CUSTOM_TRADES.get(i, [])
+        if custom:
+            cats = cats + ["other"]
         rating = round(random.uniform(3.6, 5.0), 1)
         reviews = random.randint(4, 96)
         verification = "approved" if i % 5 != 4 else ("pending" if i % 2 else "unverified")
@@ -154,6 +172,7 @@ def build() -> None:
             "id": wid,
             "fullName": name,
             "categoryIds": cats,
+            "customCategories": custom,
             "departmentId": dept,
             "city": city,
             "headline": {"ht": ht, "fr": fr, "en": en}[["ht", "fr", "en"][i % 3]],
@@ -221,6 +240,7 @@ def build() -> None:
     jobs = []
     invoices = []
     reviews_out = []
+    custom_trade_job_done = False
 
     for i in range(18):
         worker = workers[(i * 5 + 3) % len(workers)]
@@ -248,6 +268,10 @@ def build() -> None:
             })
 
         status = statuses[i % len(statuses)]
+        # One demo job booked against a trade nobody listed, so the "Other"
+        # path is walkable end to end and not just a profile decoration.
+        use_custom = bool(worker["customCategories"]) and not custom_trade_job_done
+        custom_trade_job_done = custom_trade_job_done or use_custom
         created = NOW - timedelta(days=random.randint(1, 90), hours=random.randint(0, 20))
         price = float(random.choice([1500, 2500, 3200, 4500, 6000, 8500, 12000]))
         job_id = f"job_{i + 1}"
@@ -259,7 +283,10 @@ def build() -> None:
             "workerId": worker["id"],
             "workerName": worker["fullName"],
             "workerPhotoUrl": worker["photoUrl"],
-            "categoryId": worker["categoryIds"][0],
+            "categoryId": "other" if use_custom else worker["categoryIds"][0],
+            "customCategory": (
+                worker["customCategories"][0] if use_custom else None
+            ),
             "description": job_descriptions[i % len(job_descriptions)],
             "status": status,
             "paymentMethod": ["moncash", "natcash", "card", "cash"][i % 4],

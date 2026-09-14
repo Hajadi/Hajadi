@@ -14,7 +14,7 @@ void main() {
               as List<dynamic>)
           .cast<Map<String, dynamic>>();
 
-  test('covers all ten departments and all ten trades', () {
+  test('covers every department and every trade, custom ones included', () {
     final List<Map<String, dynamic>> workers = load('workers.json');
     final Set<String> departments = workers
         .map((Map<String, dynamic> w) => '${w['departmentId']}')
@@ -26,6 +26,21 @@ void main() {
 
     expect(departments.length, HaitiDepartment.values.length);
     expect(categories.length, ServiceCategory.values.length);
+
+    // `other` in the dataset has to have a typed trade behind it, or demo
+    // mode ships an empty promise.
+    final Iterable<Map<String, dynamic>> unlisted = workers.where(
+      (Map<String, dynamic> w) =>
+          (w['categoryIds'] as List<dynamic>).contains('other'),
+    );
+    expect(unlisted, isNotEmpty);
+    for (final Map<String, dynamic> worker in unlisted) {
+      expect(
+        worker['customCategories'] as List<dynamic>,
+        isNotEmpty,
+        reason: '${worker['id']}',
+      );
+    }
   });
 
   test('every worker id, department and category resolves', () {

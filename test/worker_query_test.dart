@@ -6,6 +6,7 @@ import 'package:jwenn_met/models/worker_profile.dart';
 WorkerProfile worker({
   required String id,
   List<String> categories = const <String>['electrician'],
+  List<String> customCategories = const <String>[],
   String department = 'ouest',
   String city = 'Delmas',
   double rate = 500,
@@ -23,6 +24,7 @@ WorkerProfile worker({
       id: id,
       fullName: 'Bòs $id',
       categoryIds: categories,
+      customCategories: customCategories,
       departmentId: department,
       city: city,
       hourlyRate: rate,
@@ -162,6 +164,71 @@ void main() {
         const SearchFilters(sort: WorkerSort.price),
       );
       expect(result.map((WorkerProfile w) => w.id), <String>['a', 'b']);
+    });
+  });
+
+  group('free text across languages and custom trades', () {
+    test('finds a listed trade by its Kreyòl and French names', () {
+      for (final String needle in <String>['plonbye', 'plombier', 'PLUMBER']) {
+        final List<WorkerProfile> result = WorkerQuery.apply(
+          <WorkerProfile>[
+            worker(id: 'a'),
+            worker(id: 'b', categories: <String>['plumber']),
+          ],
+          SearchFilters(query: needle),
+        );
+        expect(
+          result.map((WorkerProfile w) => w.id),
+          <String>['b'],
+          reason: needle,
+        );
+      }
+    });
+
+    test('accents do not have to be typed', () {
+      final List<WorkerProfile> result = WorkerQuery.apply(
+        <WorkerProfile>[
+          worker(id: 'a', categories: <String>['electrician']),
+          worker(id: 'b', categories: <String>['mason']),
+        ],
+        const SearchFilters(query: 'électricien'),
+      );
+      expect(result.map((WorkerProfile w) => w.id), <String>['a']);
+    });
+
+    test('matches a trade the worker typed themselves', () {
+      final List<WorkerProfile> result = WorkerQuery.apply(
+        <WorkerProfile>[
+          worker(id: 'a'),
+          worker(
+            id: 'b',
+            categories: <String>['other'],
+            customCategories: <String>['Fotograf evènman'],
+          ),
+        ],
+        const SearchFilters(query: 'fotograf'),
+      );
+      expect(result.map((WorkerProfile w) => w.id), <String>['b']);
+    });
+
+    test('filtering on `other` returns every unlisted trade', () {
+      final List<WorkerProfile> result = WorkerQuery.apply(
+        <WorkerProfile>[
+          worker(id: 'a'),
+          worker(
+            id: 'b',
+            categories: <String>['other'],
+            customCategories: <String>['DJ'],
+          ),
+          worker(
+            id: 'c',
+            categories: <String>['mason', 'other'],
+            customCategories: <String>['Dekoratè fèt'],
+          ),
+        ],
+        const SearchFilters(categoryId: 'other'),
+      );
+      expect(result.map((WorkerProfile w) => w.id).toSet(), <String>{'b', 'c'});
     });
   });
 

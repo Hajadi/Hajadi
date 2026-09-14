@@ -42,7 +42,14 @@ class _WorkerProfileEditScreenState extends State<WorkerProfileEditScreen> {
     text: '${_dashboard.profile.yearsExperience}',
   );
 
+  late final TextEditingController _otherTrade = TextEditingController();
+
   late final Set<String> _trades = _dashboard.profile.categoryIds.toSet();
+
+  /// Trades this worker typed themselves. Kept in order so the chips do not
+  /// reshuffle under their finger as they add another.
+  late final List<String> _customTrades =
+      _dashboard.profile.customCategories.toList();
   late final Set<String> _serviceDepartments =
       <String>{..._dashboard.profile.serviceDepartmentIds}
         ..add(_dashboard.profile.departmentId);
@@ -63,6 +70,7 @@ class _WorkerProfileEditScreenState extends State<WorkerProfileEditScreen> {
     _phone.dispose();
     _rate.dispose();
     _years.dispose();
+    _otherTrade.dispose();
     super.dispose();
   }
 
@@ -88,6 +96,68 @@ class _WorkerProfileEditScreenState extends State<WorkerProfileEditScreen> {
     }
   }
 
+  /// Takes whatever the worker typed and puts it somewhere sensible.
+  ///
+  /// A trade we already list is not a custom trade, however it was spelled:
+  /// "Coiffeuse" belongs in the Hair stylist bucket customers actually browse,
+  /// not in a private one of its own. Everything else becomes a custom trade,
+  /// and the text is the signal telling us which trade to list next.
+  void _addCustomTrade() {
+    final Strings s = context.l10n;
+    final String? typed = CustomTrade.clean(_otherTrade.text);
+    if (typed == null) {
+      return;
+    }
+
+    final ServiceCategory? listed = ServiceCategory.match(typed);
+    if (listed == ServiceCategory.other) {
+      // They typed the word "Other" itself. There is no trade behind that, so
+      // there is nothing to add.
+      setState(() => _otherTrade.clear());
+      return;
+    }
+    if (listed != null) {
+      setState(() {
+        _trades.add(listed.id);
+        _otherTrade.clear();
+      });
+      showAppSnackBar(
+        context,
+        s.tradeAlreadyListed(trade: listed.label(s)),
+      );
+      return;
+    }
+
+    if (CustomTrade.isDuplicate(typed, _customTrades)) {
+      setState(() => _otherTrade.clear());
+      return;
+    }
+
+    if (_customTrades.length >= CustomTrade.maxPerWorker) {
+      showAppSnackBar(
+        context,
+        s.customTradeLimit(count: CustomTrade.maxPerWorker),
+      );
+      return;
+    }
+
+    setState(() {
+      _customTrades.add(typed);
+      _trades.add(ServiceCategory.other.id);
+      _otherTrade.clear();
+    });
+  }
+
+  void _removeCustomTrade(String trade) {
+    setState(() {
+      _customTrades.remove(trade);
+      // `other` only means anything while there is a typed trade behind it.
+      if (_customTrades.isEmpty) {
+        _trades.remove(ServiceCategory.other.id);
+      }
+    });
+  }
+
   Future<void> _save() async {
     final Strings s = context.l10n;
     await _dashboard.updateBasics(
@@ -99,7 +169,10 @@ class _WorkerProfileEditScreenState extends State<WorkerProfileEditScreen> {
           int.tryParse(_years.text) ?? _dashboard.profile.yearsExperience,
       phone: _phone.text,
     );
-    await _dashboard.setTrades(_trades.toList());
+    await _dashboard.setTrades(
+      _trades.toList(),
+      customCategories: _customTrades,
+    );
     await _dashboard.setServiceAreas(
       departmentId: _department.id,
       city: _city,
@@ -206,25 +279,92 @@ class _WorkerProfileEditScreenState extends State<WorkerProfileEditScreen> {
           const SizedBox(height: AppSpacing.lg),
           Text(s.myTrades, style: Theme.of(context).textTheme.titleMedium),
           const SizedBox(height: AppSpacing.sm),
-          Wrap(
-            spacing: AppSpacing.sm,
-            runSpacing: AppSpacing.sm,
-            children: <Widget>[
-              for (final ServiceCategory category in ServiceCategory.values)
-                FilterChip(
-                  avatar: Icon(category.icon, size: 16),
-                  label: Text(category.label(s)),
-                  selected: _trades.contains(category.id),
-                  onSelected: (bool value) => setState(() {
-                    if (value) {
-                      _trades.add(category.id);
-                    } else {
-                      _trades.remove(category.id);
-                    }
-                  }),
+          for (final TradeGroup group in TradeGroup.values)
+            if (group != TradeGroup.other) ...<Widget>[
+              Padding(
+                padding: const EdgeInsets.only(
+                  top: AppSpacing.sm,
+                  bottom: AppSpacing.xs,
                 ),
+                child: Text(
+                  group.label(s).toUpperCase(),
+                  style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                        color: Theme.of(context).colorScheme.onSurfaceVariant,
+                        letterSpacing: 0.8,
+                      ),
+                ),
+              ),
+              Wrap(
+                spacing: AppSpacing.sm,
+                runSpacing: AppSpacing.sm,
+                children: <Widget>[
+                  for (final ServiceCategory category in group.categories)
+                    FilterChip(
+                      avatar: Icon(category.icon, size: 16),
+                      label: Text(category.label(s)),
+                      selected: _trades.contains(category.id),
+                      onSelected: (bool value) => setState(() {
+                        if (value) {
+                          _trades.add(category.id);
+                        } else {
+                          _trades.remove(category.id);
+                        }
+                      }),
+                    ),
+                ],
+              ),
+            ],
+          const SizedBox(height: AppSpacing.lg),
+          Text(s.otherTrade, style: Theme.of(context).textTheme.titleMedium),
+          const SizedBox(height: AppSpacing.xs),
+          Text(
+            s.otherTradeSubtitle,
+            style: Theme.of(context).textTheme.bodySmall,
+          ),
+          const SizedBox(height: AppSpacing.sm),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Expanded(
+                child: TextField(
+                  controller: _otherTrade,
+                  textInputAction: TextInputAction.done,
+                  textCapitalization: TextCapitalization.sentences,
+                  maxLength: CustomTrade.maxLength,
+                  onSubmitted: (_) => _addCustomTrade(),
+                  decoration: InputDecoration(
+                    labelText: s.otherTrade,
+                    hintText: s.otherTradeHint,
+                    counterText: '',
+                  ),
+                ),
+              ),
+              const SizedBox(width: AppSpacing.sm),
+              Padding(
+                padding: const EdgeInsets.only(top: AppSpacing.xs),
+                child: FilledButton.tonal(
+                  onPressed: _addCustomTrade,
+                  child: Text(s.addTrade),
+                ),
+              ),
             ],
           ),
+          if (_customTrades.isNotEmpty) ...<Widget>[
+            const SizedBox(height: AppSpacing.sm),
+            Wrap(
+              spacing: AppSpacing.sm,
+              runSpacing: AppSpacing.sm,
+              children: <Widget>[
+                for (final String trade in _customTrades)
+                  InputChip(
+                    avatar: Icon(ServiceCategory.other.icon, size: 16),
+                    label: Text(trade),
+                    onDeleted: () => _removeCustomTrade(trade),
+                    deleteButtonTooltipMessage: s.removeTrade(trade: trade),
+                  ),
+              ],
+            ),
+          ],
           const SizedBox(height: AppSpacing.lg),
           Text(s.serviceAreas, style: Theme.of(context).textTheme.titleMedium),
           const SizedBox(height: AppSpacing.sm),

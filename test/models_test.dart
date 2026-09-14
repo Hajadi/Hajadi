@@ -84,6 +84,24 @@ void main() {
         profile.acceptedPaymentMethods,
         <String>['moncash', 'natcash', 'card', 'cash'],
       );
+      // A document written before custom trades existed still parses.
+      expect(profile.customCategories, isEmpty);
+    });
+
+    test('custom trades survive a round trip', () {
+      const WorkerProfile profile = WorkerProfile(
+        id: 'w2',
+        fullName: 'Darline Delva',
+        categoryIds: <String>['mason', 'other'],
+        customCategories: <String>['Fotograf evènman', 'DJ'],
+        departmentId: 'ouest',
+        city: 'Delmas',
+      );
+
+      final WorkerProfile parsed =
+          WorkerProfile.fromMap('w2', profile.toMap());
+      expect(parsed.customCategories, <String>['Fotograf evènman', 'DJ']);
+      expect(parsed.categoryIds, contains('other'));
     });
   });
 
@@ -180,6 +198,30 @@ void main() {
       expect(job.billableAmount, 3500);
       expect(job.status.isOpen, isTrue);
       expect(JobStatus.completed.isOpen, isFalse);
+    });
+
+    test('a job booked under an unlisted trade keeps the wording', () {
+      const JobRequest job = JobRequest(
+        id: 'j2',
+        customerId: 'c1',
+        customerName: 'Kliyan',
+        workerId: 'w1',
+        workerName: 'Bòs',
+        categoryId: 'other',
+        customCategory: 'Repetitè lekòl',
+        description: 'De fwa pa semèn apre lekòl.',
+        status: JobStatus.pending,
+        paymentMethod: PaymentMethod.cash,
+      );
+
+      final JobRequest parsed = JobRequest.fromMap('j2', job.toMap());
+      expect(parsed.categoryId, 'other');
+      expect(parsed.customCategory, 'Repetitè lekòl');
+      // Advancing a job must not drop what it was booked for.
+      expect(
+        parsed.copyWith(status: JobStatus.accepted).customCategory,
+        'Repetitè lekòl',
+      );
     });
   });
 

@@ -91,6 +91,7 @@ class WorkerProfile {
     required this.id,
     required this.fullName,
     required this.categoryIds,
+    this.customCategories = const <String>[],
     required this.departmentId,
     required this.city,
     this.headline = '',
@@ -125,6 +126,12 @@ class WorkerProfile {
   final String id;
   final String fullName;
   final List<String> categoryIds;
+
+  /// Trades this worker typed themselves, because none of the listed
+  /// [ServiceCategory] values named what they do. Present only alongside the
+  /// `other` id in [categoryIds]; see `CustomTrade` for the limits.
+  final List<String> customCategories;
+
   final String departmentId;
   final String city;
   final String headline;
@@ -159,6 +166,7 @@ class WorkerProfile {
         id: id,
         fullName: Json.asString(map['fullName']),
         categoryIds: Json.asStringList(map['categoryIds']),
+        customCategories: Json.asStringList(map['customCategories']),
         departmentId: Json.asString(map['departmentId']),
         city: Json.asString(map['city']),
         headline: Json.asString(map['headline']),
@@ -196,6 +204,7 @@ class WorkerProfile {
   Map<String, dynamic> toMap() => <String, dynamic>{
         'fullName': fullName,
         'categoryIds': categoryIds,
+        'customCategories': customCategories,
         'departmentId': departmentId,
         'city': city,
         'headline': headline,
@@ -226,6 +235,7 @@ class WorkerProfile {
   WorkerProfile copyWith({
     String? fullName,
     List<String>? categoryIds,
+    List<String>? customCategories,
     String? departmentId,
     String? city,
     String? headline,
@@ -253,6 +263,7 @@ class WorkerProfile {
         id: id,
         fullName: fullName ?? this.fullName,
         categoryIds: categoryIds ?? this.categoryIds,
+        customCategories: customCategories ?? this.customCategories,
         departmentId: departmentId ?? this.departmentId,
         city: city ?? this.city,
         headline: headline ?? this.headline,

@@ -2,8 +2,10 @@
 
 A production-shaped Flutter marketplace connecting customers with verified
 skilled workers across all ten departments of Haiti: electricians, plumbers,
-carpenters, masons, mechanics, painters, welders, cleaners, tailors and AC
-technicians.
+carpenters, masons, mechanics, painters, welders and AC technicians; cleaners
+and tailors; hair stylists, barbers, makeup artists, nail technicians and
+massage therapists — plus **Other**, where a worker types a trade the catalog
+does not list yet and is still searchable and bookable under it.
 
 Trilingual end to end — **Kreyòl Ayisyen · Français · English** — with MonCash,
 NatCash and cash settlement, ID verification, in-app chat and an admin console.
@@ -28,6 +30,9 @@ flutter run          # starts in demo mode: no Firebase project needed
 | Translations (EN / FR / HT) | `assets/i18n/` |
 | Sample dataset | `assets/sample_data/` |
 | Security rules, indexes, Cloud Functions | `firebase/`, `functions/` |
+| **Start here if you have never shipped an app** | [`docs/GETTING_STARTED.md`](docs/GETTING_STARTED.md) |
+| MVP scope, success metrics, launch plan | [`docs/MVP.md`](docs/MVP.md) |
+| Paste-ready prompt for an AI app builder | [`docs/BUILD_PROMPT.md`](docs/BUILD_PROMPT.md) |
 | Schema, deployment, platform setup | `docs/` |
 
 ## Architecture

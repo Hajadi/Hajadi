@@ -22,7 +22,10 @@ class HomeViewModel extends BaseViewModel {
   List<WorkerProfile> get nearby => _nearby;
   List<WorkerProfile> get verified => _verified;
   LatLngPoint? get position => _position;
-  List<ServiceCategory> get categories => ServiceCategory.values;
+  /// The home shelf browses listed trades only — "Other" is not a trade
+  /// anyone shops for, it is an escape hatch. The full catalog screen shows
+  /// it, grouped and explained.
+  List<ServiceCategory> get categories => ServiceCategory.listed;
 
   Future<void> load() async {
     await guard(() async {

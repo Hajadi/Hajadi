@@ -52,8 +52,16 @@ class WorkerDashboardViewModel extends BaseViewModel {
         ),
       );
 
-  Future<void> setTrades(List<String> categoryIds) =>
-      _save(_profile.copyWith(categoryIds: categoryIds));
+  Future<void> setTrades(
+    List<String> categoryIds, {
+    List<String> customCategories = const <String>[],
+  }) =>
+      _save(
+        _profile.copyWith(
+          categoryIds: categoryIds,
+          customCategories: customCategories,
+        ),
+      );
 
   Future<void> setServiceAreas({
     required String departmentId,

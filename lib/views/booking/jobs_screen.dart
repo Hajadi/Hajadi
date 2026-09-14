@@ -120,7 +120,11 @@ class JobCard extends StatelessWidget {
     final Strings s = context.l10n;
     final ThemeData theme = Theme.of(context);
     final String localeCode = Localizations.localeOf(context).languageCode;
-    final ServiceCategory? category = ServiceCategory.fromId(job.categoryId);
+    final String categoryLabel = TradeLabels.forJob(
+      categoryId: job.categoryId,
+      customCategory: job.customCategory,
+      s: s,
+    );
     final String counterpartName = asWorker ? job.customerName : job.workerName;
     final String? counterpartPhoto =
         asWorker ? job.customerPhotoUrl : job.workerPhotoUrl;
@@ -144,7 +148,7 @@ class JobCard extends StatelessWidget {
                   children: <Widget>[
                     Text(counterpartName, style: theme.textTheme.titleMedium),
                     Text(
-                      '${category?.label(s) ?? ''} · '
+                      '$categoryLabel · '
                       '${Formatters.date(job.createdAt, localeCode)}',
                       style: theme.textTheme.bodySmall,
                     ),

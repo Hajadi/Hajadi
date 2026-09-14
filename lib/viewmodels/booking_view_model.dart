@@ -1,3 +1,4 @@
+import '../core/constants/service_categories.dart';
 import '../models/app_user.dart';
 import '../models/job_request.dart';
 import '../models/worker_profile.dart';
@@ -8,9 +9,8 @@ import 'base_view_model.dart';
 /// or a trip to the photo picker never loses what the customer typed.
 class BookingViewModel extends BaseViewModel {
   BookingViewModel(this._services, this.worker, this.customer)
-      : _categoryId = worker.categoryIds.isEmpty
-            ? 'electrician'
-            : worker.categoryIds.first,
+      : _categoryId = _initialCategoryId(worker),
+        _customCategory = _initialCustomCategory(worker),
         _departmentId = customer.departmentId ?? worker.departmentId,
         _city = customer.city ?? worker.city {
     // Never preselect a method this worker does not take.
@@ -25,6 +25,7 @@ class BookingViewModel extends BaseViewModel {
   final AppUser customer;
 
   String _categoryId;
+  String? _customCategory;
   String _description = '';
   String _addressNote = '';
   String? _departmentId;
@@ -35,6 +36,7 @@ class BookingViewModel extends BaseViewModel {
   final List<String> _photoUrls = <String>[];
 
   String get categoryId => _categoryId;
+  String? get customCategory => _customCategory;
   String get description => _description;
   String get addressNote => _addressNote;
   String? get departmentId => _departmentId;
@@ -54,10 +56,32 @@ class BookingViewModel extends BaseViewModel {
 
   bool get canSubmit => _description.trim().length >= 10;
 
-  void setCategory(String value) {
+  /// [custom] carries the worker's own wording when [value] is the `other`
+  /// id — the job is then for a trade the catalog does not list yet.
+  void setCategory(String value, {String? custom}) {
     _categoryId = value;
+    _customCategory = value == ServiceCategory.other.id ? custom : null;
     safeNotify();
   }
+
+  /// Prefer a listed trade; fall back to the worker's own, so a worker who
+  /// only does something unlisted is still bookable.
+  static String _initialCategoryId(WorkerProfile worker) {
+    for (final String id in worker.categoryIds) {
+      if (id != ServiceCategory.other.id) {
+        return id;
+      }
+    }
+    return worker.customCategories.isEmpty
+        ? 'electrician'
+        : ServiceCategory.other.id;
+  }
+
+  static String? _initialCustomCategory(WorkerProfile worker) =>
+      _initialCategoryId(worker) == ServiceCategory.other.id &&
+              worker.customCategories.isNotEmpty
+          ? worker.customCategories.first
+          : null;
 
   void setDescription(String value) {
     _description = value;
@@ -111,6 +135,7 @@ class BookingViewModel extends BaseViewModel {
           workerName: worker.fullName,
           workerPhotoUrl: worker.photoUrl,
           categoryId: _categoryId,
+          customCategory: _customCategory,
           description: _description.trim(),
           status: JobStatus.pending,
           paymentMethod: _paymentMethod,

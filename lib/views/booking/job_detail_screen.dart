@@ -48,7 +48,11 @@ class JobDetailScreen extends StatelessWidget {
     final JobRequest job = matches.first;
     final String localeCode = Localizations.localeOf(context).languageCode;
     final ThemeData theme = Theme.of(context);
-    final ServiceCategory? category = ServiceCategory.fromId(job.categoryId);
+    final String categoryLabel = TradeLabels.forJob(
+      categoryId: job.categoryId,
+      customCategory: job.customCategory,
+      s: s,
+    );
 
     return Scaffold(
       appBar: AppBar(
@@ -91,7 +95,7 @@ class JobDetailScreen extends StatelessWidget {
                             style: theme.textTheme.titleMedium,
                           ),
                           Text(
-                            category?.label(s) ?? '',
+                            categoryLabel,
                             style: theme.textTheme.bodySmall,
                           ),
                         ],
