@@ -99,6 +99,7 @@ Anything not on that path is justified below or cut.
 | M1 | Email + phone (OTP) sign-up, two roles (customer / worker) | Entry to everything |
 | M2 | Worker profile: photo, trade(s), commune, years of experience, rate, short bio, up to 6 portfolio photos | This *is* the product's answer to "can I trust this person" |
 | M3 | Search by trade + commune, with distance/rating/price sort and filters | The discovery test (A2) |
+| M3b | An **Other** trade a worker types themselves, searchable and bookable like any listed one | A catalog is a guess; this is how it corrects itself (see §6) |
 | M4 | Job request → worker accept/decline → in-progress → completed | The core transaction (A1, A2) |
 | M5 | 1:1 in-app chat scoped to a job | Terms get agreed in conversation, not in a form |
 | M6 | Invoice on completion, settled by cash-confirmed or MonCash | The money test (A3) |
@@ -141,7 +142,8 @@ re-entry condition.
 **Launch area:** Port-au-Prince metro only — Pétion-Ville, Delmas, Port-au-Prince
 commune, Carrefour, Croix-des-Bouquets. One contiguous, dense market.
 
-**Launch trades:** five, chosen for frequency of need and low job-size variance:
+**Launch trades — vertical 1, building & repair:** five, chosen for frequency
+of need and low job-size variance:
 
 1. Elektrisyen (electrician)
 2. Plonbye (plumber)
@@ -149,9 +151,52 @@ commune, Carrefour, Croix-des-Bouquets. One contiguous, dense market.
 4. Teknisyen AC / frijidè (AC & refrigeration)
 5. Mekanisyen (mechanic)
 
+**Vertical 2, beauty & wellness — a decision, not five more chips** (Q8).
+Kwafè (hair stylist), barbye (barber), makiyè (makeup artist), manikè (nail
+technician) and masè (massage therapist) are in the catalog and fully built. But
+they are a *different marketplace*: appointments rather than emergencies, low
+ticket, high frequency, high repeat, and largely a different population on both
+sides. That is not a reason to skip it — the opposite. Higher frequency means
+A1, A2 and A4 all resolve faster, so beauty may be the better wedge, or a
+parallel one. What it must not be is an accident: launching ten trades to test
+one hypothesis dilutes supply density across two markets that share nothing but
+an app. Pick one to lead with, or run both deliberately with separate supply
+targets.
+
 **Supply target before opening to customers:** 15 verified workers per trade in
-the launch area = **75 verified workers**. Do not open the customer side below
-this. A customer who searches and finds nobody does not come back.
+the launch area = **75 verified workers** per vertical. Do not open the customer
+side below this. A customer who searches and finds nobody does not come back.
+
+**The full catalog is 15 listed trades plus Other**, and that is fine — the
+catalog is what exists in the app, the *launch set* is what supply and marketing
+are pointed at. They are different numbers on purpose.
+
+### 5.5 The Other trade — how the catalog corrects itself
+
+Any fixed list of trades is a guess about a market nobody has measured yet. So a
+worker who does not find their trade types it, and:
+
+- it is stored verbatim, in whatever language they typed it, and shown that way
+  to everyone — at most 3 per worker, 40 characters each;
+- if what they typed is a trade we *already* list, however spelled ("Coiffeuse",
+  "kwafe", "Hair Stylist"), they are put in that real bucket instead — a private
+  duplicate nobody browses helps no one;
+- customers reach them through free-text search and through an **Other** tile
+  in the browse grid and filter sheet;
+- a job booked with them records `other` plus that wording, so the job history
+  says what it was actually for.
+
+**The typed text is the product's best demand signal.** It is a list, in the
+workers' own words, of the trades the catalog is missing. Review it monthly:
+when enough workers type the same thing, it becomes a real trade and their
+documents migrate off `other`. Two of the metrics in §9 should be read together
+with it — a rising share of `other` profiles means the catalog is falling
+behind its own market.
+
+**Moderation.** Custom trades are free text on a world-readable profile. The
+count is capped in the security rules and the length in the client; the content
+itself is covered by the same report queue that covers a bio (§12). The monthly
+review is also the moderation pass.
 
 ---
 
@@ -212,6 +257,19 @@ _As a customer, I open a profile so I can decide whether to trust this person._
 **US-8 — Get paid**
 - On completion I issue the invoice from the job screen.
 - My earnings screen shows paid, pending and this-month totals.
+
+**US-11 — Name your own trade**
+_As a worker whose trade is not in the list, I type it so customers can still
+find and book me._
+- Given I open My trades, when none of the tiles is what I do, then I type it
+  into "Other trade" and it appears as a chip on my profile.
+- Given I type something the app already lists, however I spelled it, then it
+  selects that listed trade instead and tells me so — I am not filed into a
+  bucket nobody browses.
+- I can add up to 3, at 40 characters each; removing the last one clears my
+  Other status.
+- My typed trade is searchable by name, appears under the Other tile, and a job
+  booked with me records that wording.
 
 ### Admin
 
@@ -311,6 +369,7 @@ committed to is decoration.
 | Customer repeat rate (2nd job within 90 days) | ≥ 25% | Demand health |
 | Crash-free sessions | ≥ 99.5% | Quality |
 | Disputes / reports per 100 completed jobs | < 3 | Trust |
+| Share of new worker profiles using **Other** | watch, no target | The catalog's own error rate (§5.5) |
 
 **Guardrails — investigate immediately if breached:** any suspended worker who
 completed a job in the prior 7 days; any report unactioned for > 48h; median
@@ -449,6 +508,7 @@ second city (Cap-Haïtien) · additional trades · referral loop.
 | Q5 | Is the operator role staffed, and what is the SLA on verification and reports? | Week 7 | _unassigned_ |
 | Q6 | Are the §9 targets accepted as written? | Week 2 | _unassigned_ |
 | Q7 | Photography budget and shoot schedule? | Week 1 | _unassigned_ |
+| Q8 | Does the MVP launch building & repair, beauty & wellness, or both — and with what supply target each? (§5.4) | Week 2 | _unassigned_ |
 
 ---
 
@@ -474,8 +534,12 @@ validated against a production Firebase project or a real payment provider.
 | M12 Offline reads | Built | Firestore persistence + `SharedPreferences` shelves |
 | M13 Admin console | Built | `lib/views/admin/` |
 | Cards (Visa/Mastercard) | Built — **deferred by scope**, put behind a flag | `lib/core/utils/card_utils.dart`, `functions/index.js` |
+| Beauty & wellness trades, grouped catalog | Built | `lib/core/constants/service_categories.dart` |
+| **Other** free-text trade, deduped against the catalog | Built | `service_categories.dart`, `worker_profile_edit_screen.dart` |
+| Search matching trade names in all three languages | Built | `lib/core/utils/worker_query.dart` |
 | Launch-area restriction to metro | **Not built** — currently all ten departments | `lib/core/constants/` |
-| Trade list narrowed to five | **Not built** — currently ten trades | `lib/core/constants/` |
+| Launch set narrowed to one vertical | **Not built** — catalog carries 15 trades + Other | `lib/core/constants/` |
+| Monthly review of typed trades → catalog promotions | **No owner** | — |
 | Heritage + worker photography | **Not sourced** — placeholder branding only | `assets/branding/` |
 | Community guidelines, ToS, privacy policy | **Not written** | — |
 | Analytics + crash reporting for §9 | **Not wired** | — |

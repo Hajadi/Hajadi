@@ -88,12 +88,27 @@ class _BookingScreenState extends State<BookingScreen> {
               for (final ServiceCategory category in booking
                   .worker.categoryIds
                   .map(ServiceCategory.fromId)
-                  .whereType<ServiceCategory>())
+                  .whereType<ServiceCategory>()
+                  .where((ServiceCategory category) =>
+                      category != ServiceCategory.other))
                 ChoiceChip(
                   avatar: Icon(category.icon, size: 16),
                   label: Text(category.label(s)),
                   selected: booking.categoryId == category.id,
                   onSelected: (_) => booking.setCategory(category.id),
+                ),
+              // A trade this worker named themselves is bookable like any
+              // other; the job stores the `other` id plus their wording.
+              for (final String trade in booking.worker.customCategories)
+                ChoiceChip(
+                  avatar: Icon(ServiceCategory.other.icon, size: 16),
+                  label: Text(trade),
+                  selected: booking.categoryId == ServiceCategory.other.id &&
+                      booking.customCategory == trade,
+                  onSelected: (_) => booking.setCategory(
+                    ServiceCategory.other.id,
+                    custom: trade,
+                  ),
                 ),
             ],
           ),

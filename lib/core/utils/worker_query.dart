@@ -1,5 +1,6 @@
 import '../../models/search_filters.dart';
 import '../../models/worker_profile.dart';
+import '../constants/service_categories.dart';
 import 'geo.dart';
 
 /// Client-side half of worker search.
@@ -14,7 +15,9 @@ abstract final class WorkerQuery {
     double? originLatitude,
     double? originLongitude,
   }) {
-    final String needle = filters.query.trim().toLowerCase();
+    // Folded once: the same accent- and case-insensitive form every trade
+    // name is compared in, so "Électricien" and "electricien" both land.
+    final String needle = TradeText.fold(filters.query);
 
     final List<WorkerProfile> result = <WorkerProfile>[];
     for (final WorkerProfile worker in source) {
@@ -79,13 +82,22 @@ abstract final class WorkerQuery {
     return result;
   }
 
+  /// Free text matches the worker's own words, the trades they picked — in any
+  /// of the three languages, so "plonbye" finds a plumber — and any trade they
+  /// typed themselves.
   static bool _matchesText(WorkerProfile worker, String needle) =>
-      worker.fullName.toLowerCase().contains(needle) ||
-      worker.headline.toLowerCase().contains(needle) ||
-      worker.bio.toLowerCase().contains(needle) ||
-      worker.city.toLowerCase().contains(needle) ||
-      worker.categoryIds
-          .any((String id) => id.replaceAll('_', ' ').contains(needle));
+      TradeText.fold(worker.fullName).contains(needle) ||
+      TradeText.fold(worker.headline).contains(needle) ||
+      TradeText.fold(worker.bio).contains(needle) ||
+      TradeText.fold(worker.city).contains(needle) ||
+      worker.customCategories
+          .any((String trade) => TradeText.fold(trade).contains(needle)) ||
+      worker.categoryIds.any((String id) {
+        final ServiceCategory? category = ServiceCategory.fromId(id);
+        return category == null
+            ? TradeText.fold(id).contains(needle)
+            : category.matchesNeedle(needle);
+      });
 
   /// Rating first, then review volume — a lone 5★ should not outrank a
   /// worker with fifty reviews at 4.8★.

@@ -31,10 +31,11 @@ class WorkerCard extends StatelessWidget {
     final ThemeData theme = Theme.of(context);
     final Strings s = context.l10n;
     final String localeCode = Localizations.localeOf(context).languageCode;
-    final List<ServiceCategory> trades = worker.categoryIds
-        .map(ServiceCategory.fromId)
-        .whereType<ServiceCategory>()
-        .toList();
+    final List<String> trades = TradeLabels.forWorker(
+      categoryIds: worker.categoryIds,
+      customCategories: worker.customCategories,
+      s: s,
+    );
 
     return AppCard(
       onTap: onTap,
@@ -92,9 +93,7 @@ class WorkerCard extends StatelessWidget {
                 Text(
                   trades.isEmpty
                       ? worker.headline
-                      : trades
-                          .map((ServiceCategory trade) => trade.label(s))
-                          .join(' · '),
+                      : trades.join(' · '),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: theme.textTheme.bodySmall,
@@ -179,9 +178,12 @@ class WorkerShelfCard extends StatelessWidget {
     final ThemeData theme = Theme.of(context);
     final Strings s = context.l10n;
     final String localeCode = Localizations.localeOf(context).languageCode;
-    final ServiceCategory? trade = worker.categoryIds.isEmpty
-        ? null
-        : ServiceCategory.fromId(worker.categoryIds.first);
+    final List<String> trades = TradeLabels.forWorker(
+      categoryIds: worker.categoryIds,
+      customCategories: worker.customCategories,
+      s: s,
+    );
+    final String? trade = trades.isEmpty ? null : trades.first;
 
     return SizedBox(
       width: 176,
@@ -211,7 +213,7 @@ class WorkerShelfCard extends StatelessWidget {
               style: theme.textTheme.titleMedium,
             ),
             Text(
-              trade?.label(s) ?? worker.city,
+              trade ?? worker.city,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               style: theme.textTheme.bodySmall,

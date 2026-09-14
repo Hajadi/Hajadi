@@ -335,6 +335,60 @@ class Strings {
   /// en: AC technician
   String get catAcTechnician => _l.raw('catAcTechnician');
 
+  /// en: Hair stylist
+  String get catHairStylist => _l.raw('catHairStylist');
+
+  /// en: Barber
+  String get catBarber => _l.raw('catBarber');
+
+  /// en: Makeup artist
+  String get catMakeupArtist => _l.raw('catMakeupArtist');
+
+  /// en: Nail technician
+  String get catNailTechnician => _l.raw('catNailTechnician');
+
+  /// en: Massage therapist
+  String get catMassageTherapist => _l.raw('catMassageTherapist');
+
+  /// en: Other
+  String get catOther => _l.raw('catOther');
+
+  /// en: Building & repair
+  String get groupTrades => _l.raw('groupTrades');
+
+  /// en: Home & everyday
+  String get groupHome => _l.raw('groupHome');
+
+  /// en: Beauty & wellness
+  String get groupBeauty => _l.raw('groupBeauty');
+
+  /// en: Other
+  String get groupOther => _l.raw('groupOther');
+
+  /// en: Other trade
+  String get otherTrade => _l.raw('otherTrade');
+
+  /// en: Not in the list? Type it and we will add it to your profile.
+  String get otherTradeSubtitle => _l.raw('otherTradeSubtitle');
+
+  /// en: e.g. Photographer, tutor, DJ
+  String get otherTradeHint => _l.raw('otherTradeHint');
+
+  /// en: Remove {trade}
+  String removeTrade({required Object? trade}) =>
+      _l.sub('removeTrade', <String, Object?>{'trade': trade});
+
+  /// en: {trade} is already a listed trade — we selected it for you.
+  String tradeAlreadyListed({required Object? trade}) =>
+      _l.sub('tradeAlreadyListed', <String, Object?>{'trade': trade});
+
+  /// en: You can add up to {count} of your own trades.
+  String customTradeLimit({required Object? count}) =>
+      _l.sub('customTradeLimit', <String, Object?>{'count': count});
+
+  /// en: Trades people added themselves. Search by name to find them.
+  String get customTradeSearchNote => _l.raw('customTradeSearchNote');
+
   /// en: Ouest
   String get deptOuest => _l.raw('deptOuest');
 

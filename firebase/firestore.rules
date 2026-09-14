@@ -55,9 +55,21 @@ service cloud.firestore {
 
     // -------------------------------------------------------------- workers
     match /workers/{uid} {
+      // Trades a worker typed themselves are free text on a world-readable
+      // document, so the count is capped here. Per-item length is capped in
+      // the client (CustomTrade.maxLength); rules cannot iterate a list, so
+      // the backstop for the content itself is the report queue, the same one
+      // that covers a bio.
+      function customTradesOk() {
+        return !('customCategories' in request.resource.data) ||
+          (request.resource.data.customCategories is list &&
+           request.resource.data.customCategories.size() <= 3);
+      }
+
       allow read: if true;
-      allow create: if isSelf(uid);
+      allow create: if isSelf(uid) && customTradesOk();
       allow update: if isAdmin() || (isSelf(uid) && isActive() &&
+        customTradesOk() &&
         !request.resource.data.diff(resource.data).affectedKeys()
           .hasAny(['rating', 'reviewCount', 'jobsCompleted', 'verification', 'suspended']));
       allow delete: if isAdmin();

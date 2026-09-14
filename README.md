@@ -2,8 +2,10 @@
 
 A production-shaped Flutter marketplace connecting customers with verified
 skilled workers across all ten departments of Haiti: electricians, plumbers,
-carpenters, masons, mechanics, painters, welders, cleaners, tailors and AC
-technicians.
+carpenters, masons, mechanics, painters, welders and AC technicians; cleaners
+and tailors; hair stylists, barbers, makeup artists, nail technicians and
+massage therapists — plus **Other**, where a worker types a trade the catalog
+does not list yet and is still searchable and bookable under it.
 
 Trilingual end to end — **Kreyòl Ayisyen · Français · English** — with MonCash,
 NatCash and cash settlement, ID verification, in-app chat and an admin console.

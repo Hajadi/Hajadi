@@ -3,7 +3,10 @@
 Conventions: document ids are opaque; every `*At` field is a server timestamp;
 amounts are in **gourdes (HTG)**; `categoryId` and `departmentId` store the
 stable ids from `ServiceCategory` / `HaitiDepartment` and are **never**
-localized in the database — the label is resolved at render time.
+localized in the database — the label is resolved at render time. The one
+exception is a custom trade, which has no id to resolve: it is stored as the
+text the worker typed, in whatever language they typed it, and shown that way
+to everyone.
 
 Fields marked **server-owned** are rejected for client writes by
 `firebase/firestore.rules` and maintained by `functions/index.js`.
@@ -52,7 +55,8 @@ The public, searchable half of a worker account. Same id as `users/{uid}`.
 | Field | Type | Notes |
 | --- | --- | --- |
 | `fullName`, `headline`, `bio` | string | |
-| `categoryIds` | string[] | one or more trades |
+| `categoryIds` | string[] | one or more `ServiceCategory` ids; the id `other` means "see `customCategories`" |
+| `customCategories` | string[] | trades the worker typed themselves, verbatim, in their own language. At most 3, each ≤ 40 characters. Present only alongside `other` in `categoryIds` |
 | `departmentId`, `city` | string | home base |
 | `serviceDepartmentIds`, `serviceCities` | string[] | where they will travel |
 | `hourlyRate` | number | HTG |
@@ -73,6 +77,16 @@ Search hits the indexed predicates server-side (`suspended`, `categoryIds`,
 distance are applied client-side by `WorkerQuery` so identical rules govern
 cached, live and demo results.
 
+`other` is an ordinary value in `categoryIds`, so filtering for it needs no new
+index: it returns every worker with a trade the catalog does not list yet. Those
+workers are found by name through free text, which matches `customCategories`
+as well as the listed trades' names in all three languages — a search for
+"plonbye", "plombier" or "plumber" reaches the same workers.
+
+A `customCategories` entry is a promotion candidate: when enough workers type
+the same thing, it should become a real `ServiceCategory` value, and their
+documents migrated from `other` to the new id.
+
 ---
 
 ## `jobs/{jobId}`
@@ -83,7 +97,8 @@ One customer asking one worker for one job.
 | --- | --- | --- |
 | `customerId`, `customerName`, `customerPhotoUrl` | string | denormalized for list rendering |
 | `workerId`, `workerName`, `workerPhotoUrl` | string | |
-| `categoryId` | string | |
+| `categoryId` | string | a `ServiceCategory` id, or `other` |
+| `customCategory` | string? | set when `categoryId` is `other` — the wording the job was booked under |
 | `description` | string | |
 | `status` | string | `pending` → `accepted` → `in_progress` → `completed`; or `rejected` / `cancelled` |
 | `paymentMethod` | string | `moncash` \| `natcash` \| `card` \| `cash` |

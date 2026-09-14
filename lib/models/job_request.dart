@@ -61,6 +61,7 @@ class JobRequest {
     required this.workerId,
     required this.workerName,
     required this.categoryId,
+    this.customCategory,
     required this.description,
     required this.status,
     required this.paymentMethod,
@@ -90,6 +91,11 @@ class JobRequest {
   final String workerName;
   final String? workerPhotoUrl;
   final String categoryId;
+
+  /// What the customer typed when [categoryId] is `other` — the job is for a
+  /// trade the catalog does not list yet.
+  final String? customCategory;
+
   final String description;
   final JobStatus status;
   final PaymentMethod paymentMethod;
@@ -119,6 +125,7 @@ class JobRequest {
         workerName: Json.asString(map['workerName']),
         workerPhotoUrl: Json.asStringOrNull(map['workerPhotoUrl']),
         categoryId: Json.asString(map['categoryId']),
+        customCategory: Json.asStringOrNull(map['customCategory']),
         description: Json.asString(map['description']),
         status: JobStatus.fromId(Json.asStringOrNull(map['status'])),
         paymentMethod:
@@ -149,6 +156,7 @@ class JobRequest {
         'workerName': workerName,
         'workerPhotoUrl': workerPhotoUrl,
         'categoryId': categoryId,
+        'customCategory': customCategory,
         'description': description,
         'status': status.id,
         'paymentMethod': paymentMethod.id,
@@ -185,6 +193,7 @@ class JobRequest {
         workerName: workerName,
         workerPhotoUrl: workerPhotoUrl,
         categoryId: categoryId,
+        customCategory: customCategory,
         description: description,
         status: status ?? this.status,
         paymentMethod: paymentMethod,

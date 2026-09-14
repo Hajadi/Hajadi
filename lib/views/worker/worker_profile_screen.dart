@@ -116,10 +116,20 @@ class WorkerProfileScreen extends StatelessWidget {
                 children: <Widget>[
                   for (final ServiceCategory trade in worker.categoryIds
                       .map(ServiceCategory.fromId)
-                      .whereType<ServiceCategory>())
+                      .whereType<ServiceCategory>()
+                      .where((ServiceCategory trade) =>
+                          trade != ServiceCategory.other))
                     Chip(
                       avatar: Icon(trade.icon, size: 16),
                       label: Text(trade.label(s)),
+                    ),
+                  // Trades this worker typed themselves carry the generic
+                  // "other" icon — they are not a listed category and should
+                  // not borrow another trade's mark.
+                  for (final String trade in worker.customCategories)
+                    Chip(
+                      avatar: Icon(ServiceCategory.other.icon, size: 16),
+                      label: Text(trade),
                     ),
                 ],
               ),

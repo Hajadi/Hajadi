@@ -79,30 +79,49 @@ class _FiltersSheetState extends State<_FiltersSheet> {
               padding: const EdgeInsets.all(AppSpacing.lg),
               children: <Widget>[
                 _Label(s.filterCategory),
-                Wrap(
-                  spacing: AppSpacing.sm,
-                  runSpacing: AppSpacing.sm,
-                  children: <Widget>[
-                    ChoiceChip(
-                      label: Text(s.anyCategory),
-                      selected: _filters.categoryId == null,
-                      onSelected: (_) => setState(
-                        () => _filters = _filters.copyWith(categoryId: null),
+                // Align, not a bare chip: a ListView child stretches to the
+                // full width, and a chip that wide stops reading as a chip.
+                Align(
+                  alignment: AlignmentDirectional.centerStart,
+                  child: ChoiceChip(
+                    label: Text(s.anyCategory),
+                    selected: _filters.categoryId == null,
+                    onSelected: (_) => setState(
+                      () => _filters = _filters.copyWith(categoryId: null),
+                    ),
+                  ),
+                ),
+                // Sixteen trades in one wrap is a wall. Grouping keeps the
+                // sheet scannable and puts "Other" where it belongs — last,
+                // with a line saying what is in it.
+                for (final TradeGroup group in TradeGroup.values) ...<Widget>[
+                  const SizedBox(height: AppSpacing.md),
+                  _GroupLabel(group.label(s)),
+                  Wrap(
+                    spacing: AppSpacing.sm,
+                    runSpacing: AppSpacing.sm,
+                    children: <Widget>[
+                      for (final ServiceCategory category in group.categories)
+                        ChoiceChip(
+                          label: Text(category.label(s)),
+                          avatar: Icon(category.icon, size: 16),
+                          selected: _filters.categoryId == category.id,
+                          onSelected: (_) => setState(
+                            () => _filters =
+                                _filters.copyWith(categoryId: category.id),
+                          ),
+                        ),
+                    ],
+                  ),
+                  if (group == TradeGroup.other)
+                    Padding(
+                      padding: const EdgeInsets.only(top: AppSpacing.xs),
+                      child: Text(
+                        s.customTradeSearchNote,
+                        style: Theme.of(context).textTheme.bodySmall,
                       ),
                     ),
-                    for (final ServiceCategory category
-                        in ServiceCategory.values)
-                      ChoiceChip(
-                        label: Text(category.label(s)),
-                        avatar: Icon(category.icon, size: 16),
-                        selected: _filters.categoryId == category.id,
-                        onSelected: (_) => setState(
-                          () => _filters =
-                              _filters.copyWith(categoryId: category.id),
-                        ),
-                      ),
-                  ],
-                ),
+                ],
                 const SizedBox(height: AppSpacing.lg),
                 _Label(s.filterDepartment),
                 DropdownButtonFormField<String?>(
@@ -223,6 +242,29 @@ class _FiltersSheetState extends State<_FiltersSheet> {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+/// A quieter heading than [_Label] — it separates the trade groups without
+/// competing with the section labels above them.
+class _GroupLabel extends StatelessWidget {
+  const _GroupLabel(this.text);
+
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    return Padding(
+      padding: const EdgeInsets.only(bottom: AppSpacing.sm),
+      child: Text(
+        text.toUpperCase(),
+        style: theme.textTheme.labelSmall?.copyWith(
+          color: theme.colorScheme.onSurfaceVariant,
+          letterSpacing: 0.8,
+        ),
       ),
     );
   }
